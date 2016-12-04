@@ -8,10 +8,9 @@ namespace DataAccessLayer.Repositories.Contracts
     {
         T GetbyKey(object key);
         ICollection<T> Search(Func<T, bool> predicate);
-        ICollection<T> GetAll();
+        IEnumerable<T> GetAll();
         IQueryable<T> GetQueryable();
-        void AddOrUpdate(T entity);
-        void Remove(T entity);
+        T AddOrUpdate(T entity);
         void Remove(int id);
         void SaveChanges();
     }

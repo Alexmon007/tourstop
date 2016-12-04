@@ -72,12 +72,12 @@ namespace Business.Handlers.Handlers
 
         #endregion
 
-        private static void ValidateRequest<TRequest>(TRequest request, BaseValidator<TRequest> validator)
+        protected static void ValidateRequest<TRequest>(TRequest request, BaseValidator<TRequest> validator)
         {
             if (!validator.Validate(request).IsValid) throw new InvalidRequestException();
         }
 
-        private ReadWriteBusinessPetition<T> ParseReadWriteRequest(ReadWriteRequest<T> request)
+        protected ReadWriteBusinessPetition<T> ParseReadWriteRequest(ReadWriteRequest<T> request)
         {
             var petition = (ReadWriteBusinessPetition<T>) request;
             petition.RequestingUser = _authenticator.Authenticate(request.AuthToken);

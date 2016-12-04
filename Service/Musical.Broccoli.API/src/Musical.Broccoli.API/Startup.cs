@@ -82,18 +82,18 @@ namespace Musical.Broccoli.API
 
             #region Repositories
 
-            services.AddSingleton<IAddressRepository, AddressRepository>();
-            services.AddSingleton<ICheckPointRepository, CheckPointRepository>();
-            services.AddSingleton<IMessageRepository, MessageRepository>();
-            services.AddSingleton<IMovementRepository, MovementRepository>();
-            services.AddSingleton<IOrderRepository, OrderRepository>();
-            services.AddSingleton<IPaymentInfoRepository, PaymentInfoRepository>();
-            services.AddSingleton<IPromotionRepository, PromotionRepository>();
-            services.AddSingleton<IReservationRepository, ReservationRepository>();
-            services.AddSingleton<IRatingRepository, RatingRepository>();
-            services.AddSingleton<ISessionRepository, SessionRepository>();
-            services.AddSingleton<ITourRepository, TourRepository>();
-            services.AddSingleton<IUserRepository, UserRepository>();
+            services.AddScoped<IAddressRepository, AddressRepository>();
+            services.AddScoped<ICheckPointRepository, CheckPointRepository>();
+            services.AddScoped<IMessageRepository, MessageRepository>();
+            services.AddScoped<IMovementRepository, MovementRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IPaymentInfoRepository, PaymentInfoRepository>();
+            services.AddScoped<IPromotionRepository, PromotionRepository>();
+            services.AddScoped<IReservationRepository, ReservationRepository>();
+            services.AddScoped<IRatingRepository, RatingRepository>();
+            services.AddScoped<ISessionRepository, SessionRepository>();
+            services.AddScoped<ITourRepository, TourRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
             #endregion
 

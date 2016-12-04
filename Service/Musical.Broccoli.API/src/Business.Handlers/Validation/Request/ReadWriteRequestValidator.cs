@@ -24,7 +24,7 @@ namespace Business.Handlers.Validation.Request
         {
             return new ReadWriteRequestValidator<TDto>
             {
-                Validate = request => request.Data
+                Validate = request =>   request.Data
                     .Select(dto => validator.Validate(dto))
                     .Aggregate(ValidationResult.Valid(), (x, y) => x + y)
             };

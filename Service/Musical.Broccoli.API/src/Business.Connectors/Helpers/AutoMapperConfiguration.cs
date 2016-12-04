@@ -95,10 +95,10 @@ namespace Business.Connectors.Helpers
             #region Session
 
             CreateMap<Session, SessionDTO>()
-                .ForMember(dest => dest.AuthorizationToken, opt => opt.MapFrom(src => src.AuthorizationToken.ToString()));
+                .ForMember(dest => dest.AuthToken, opt => opt.MapFrom(src => src.AuthToken.ToString()));
             CreateMap<SessionDTO, Session>()
-                .ForMember(dest => dest.AuthorizationToken,
-                    opt => opt.MapFrom(src => Guid.Parse(src.AuthorizationToken)));
+                .ForMember(dest => dest.AuthToken,
+                    opt => opt.MapFrom(src => Guid.Parse(src.AuthToken)));
 
             #endregion
         }

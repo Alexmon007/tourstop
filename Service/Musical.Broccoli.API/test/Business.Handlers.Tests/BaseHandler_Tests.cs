@@ -4,7 +4,6 @@ using Business.Connectors.Response;
 using Business.Handlers.Authentication.contracts;
 using Business.Handlers.Handlers;
 using Business.Handlers.Request;
-using Business.Handlers.Validation.Dto;
 using Common.DTOs;
 using Common.Enums;
 using Common.Exceptions;
@@ -22,8 +21,9 @@ namespace Business.Handlers.Tests
         {
             var connectorMock = new Mock<IUserConnector>();
             var authenticatorMock = new Mock<IRequestAuthenticator>();
-
-            var handler = new UserRequestHandler(connectorMock.Object, authenticatorMock.Object);
+            var sessionConnectorMock = new Mock<ISessionConnector>();
+            var handler = new UserRequestHandler(connectorMock.Object, authenticatorMock.Object,
+                sessionConnectorMock.Object);
 
             var request = new ReadRequest
             {
@@ -48,11 +48,13 @@ namespace Business.Handlers.Tests
             //Mock Setup
             var connectorMock = new Mock<IUserConnector>();
             var authenticatorMock = new Mock<IRequestAuthenticator>();
+            var sessionConnectorMock = new Mock<ISessionConnector>();
 
             connectorMock.SetupGet(x => x.Get).Returns(x => new BusinessResponse<UserDTO>());
             authenticatorMock.Setup(x => x.Authenticate(It.IsAny<string>())).Returns(new UserDTO());
 
-            var handler = new UserRequestHandler(connectorMock.Object, authenticatorMock.Object);
+            var handler = new UserRequestHandler(connectorMock.Object, authenticatorMock.Object,
+                sessionConnectorMock.Object);
 
             var request = new ReadRequest
             {
@@ -76,11 +78,13 @@ namespace Business.Handlers.Tests
             //Mock Setup
             var connectorMock = new Mock<IUserConnector>();
             var authenticatorMock = new Mock<IRequestAuthenticator>();
+            var sessionConnectorMock = new Mock<ISessionConnector>();
 
             connectorMock.SetupGet(x => x.Get).Returns(x => new BusinessResponse<UserDTO>());
             authenticatorMock.Setup(x => x.Authenticate(It.IsAny<string>())).Returns(new UserDTO());
 
-            var handler = new UserRequestHandler(connectorMock.Object, authenticatorMock.Object);
+            var handler = new UserRequestHandler(connectorMock.Object, authenticatorMock.Object,
+                sessionConnectorMock.Object);
 
             var request = new ReadRequest();
 
@@ -97,11 +101,13 @@ namespace Business.Handlers.Tests
             //Mock Setup
             var connectorMock = new Mock<IUserConnector>();
             var authenticatorMock = new Mock<IRequestAuthenticator>();
+            var sessionConnectorMock = new Mock<ISessionConnector>();
 
             connectorMock.SetupGet(x => x.Save).Returns(x => new BusinessResponse<UserDTO>());
             authenticatorMock.Setup(x => x.Authenticate(It.IsAny<string>())).Returns(new UserDTO());
 
-            var handler = new UserRequestHandler(connectorMock.Object, authenticatorMock.Object);
+            var handler = new UserRequestHandler(connectorMock.Object, authenticatorMock.Object,
+                sessionConnectorMock.Object);
 
             var request = new ReadWriteRequest<UserDTO>
             {
@@ -120,11 +126,13 @@ namespace Business.Handlers.Tests
             //Mock Setup
             var connectorMock = new Mock<IUserConnector>();
             var authenticatorMock = new Mock<IRequestAuthenticator>();
+            var sessionConnectorMock = new Mock<ISessionConnector>();
 
             connectorMock.SetupGet(x => x.Save).Returns(x => new BusinessResponse<UserDTO>());
             authenticatorMock.Setup(x => x.Authenticate(It.IsAny<string>())).Returns(new UserDTO());
 
-            var handler = new UserRequestHandler(connectorMock.Object, authenticatorMock.Object);
+            var handler = new UserRequestHandler(connectorMock.Object, authenticatorMock.Object,
+                sessionConnectorMock.Object);
 
             var request = new ReadWriteRequest<UserDTO>
             {
@@ -157,11 +165,13 @@ namespace Business.Handlers.Tests
             //Mock Setup
             var connectorMock = new Mock<IUserConnector>();
             var authenticatorMock = new Mock<IRequestAuthenticator>();
+            var sessionConnectorMock = new Mock<ISessionConnector>();
 
             connectorMock.SetupGet(x => x.Delete).Returns(x => new BusinessResponse<UserDTO>());
             authenticatorMock.Setup(x => x.Authenticate(It.IsAny<string>())).Returns(new UserDTO());
 
-            var handler = new UserRequestHandler(connectorMock.Object, authenticatorMock.Object);
+            var handler = new UserRequestHandler(connectorMock.Object, authenticatorMock.Object,
+                sessionConnectorMock.Object);
 
             var request = new ReadWriteRequest<UserDTO>
             {
@@ -180,11 +190,13 @@ namespace Business.Handlers.Tests
             //Mock Setup
             var connectorMock = new Mock<IUserConnector>();
             var authenticatorMock = new Mock<IRequestAuthenticator>();
+            var sessionConnectorMock = new Mock<ISessionConnector>();
 
             connectorMock.SetupGet(x => x.Delete).Returns(x => new BusinessResponse<UserDTO>());
             authenticatorMock.Setup(x => x.Authenticate(It.IsAny<string>())).Returns(new UserDTO());
 
-            var handler = new UserRequestHandler(connectorMock.Object, authenticatorMock.Object);
+            var handler = new UserRequestHandler(connectorMock.Object, authenticatorMock.Object,
+                sessionConnectorMock.Object);
 
             var request = new ReadWriteRequest<UserDTO>
             {

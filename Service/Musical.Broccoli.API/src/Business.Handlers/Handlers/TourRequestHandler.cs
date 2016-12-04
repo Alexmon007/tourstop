@@ -9,7 +9,7 @@ namespace Business.Handlers.Handlers
 {
     public class TourRequestHandler : BaseRequestHandler<TourDTO>, ITourRequestHandler
     {
-        public TourRequestHandler(IBaseConnector<TourDTO> connector, IRequestAuthenticator authenticator)
+        public TourRequestHandler(ITourConnector connector, IRequestAuthenticator authenticator)
             : base(connector, authenticator)
         {
         }

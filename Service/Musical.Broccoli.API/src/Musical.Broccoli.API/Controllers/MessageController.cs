@@ -51,7 +51,7 @@ namespace Musical.Broccoli.API.Controllers
             {
                 result = _requestHandler.HandleReadWriteRequest(request);
             }
-            catch (UnauthorizedAccessException)
+            catch (AuthenticationException)
             {
                 return new UnauthorizedResult();
             }
@@ -70,7 +70,7 @@ namespace Musical.Broccoli.API.Controllers
             {
                 _requestHandler.HandleReadWriteRequest(request);
             }
-            catch (UnauthorizedAccessException)
+            catch (AuthenticationException)
             {
                 return new UnauthorizedResult();
             }
@@ -89,7 +89,7 @@ namespace Musical.Broccoli.API.Controllers
             {
                 _requestHandler.HandleDeleteRequest(request);
             }
-            catch (UnauthorizedAccessException)
+            catch (AuthenticationException)
             {
                 return new UnauthorizedResult();
             }

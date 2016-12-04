@@ -34,12 +34,12 @@ namespace Business.Handlers.Validation.Dto
 
         public static TourValidator NameNotEmpty()
         {
-            return Holds(tour => string.IsNullOrEmpty(tour.Title), "Title is null or empty");
+            return Holds(tour => !string.IsNullOrEmpty(tour.Title), "Title is null or empty");
         }
 
         public static TourValidator MaxReservationIsNotZeroOrLess()
         {
-            return Holds(tour => tour.MaxReservation <= 0, "Max Reservation is zero or less");
+            return Holds(tour => tour.MaxReservation > 0, "Max Reservation is zero or less");
         }
 
         public static TourValidator ReservationPriceIsNotNegative()

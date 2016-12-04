@@ -23,12 +23,12 @@ namespace DataAccessLayer.Repositories
 
         public IQueryable<T> GetQueryable()
         {
-            return DbSet;
+            return DbSet.AsNoTracking();
         }
 
-        public ICollection<T> GetAll()
+        public IEnumerable<T> GetAll()
         {
-            return Context.Set<T>().ToList();
+            return DbSet.AsNoTracking();
         }
 
         public T GetbyKey(object key)
@@ -45,14 +45,9 @@ namespace DataAccessLayer.Repositories
 
         #region Write
 
-        public void AddOrUpdate(T entity)
+        public T AddOrUpdate(T entity)
         {
-            Context.Entry(entity).State = entity.Id == 0 ? EntityState.Added : EntityState.Modified;
-        }
-
-        public void Remove(T entity)
-        {
-            Context.Entry(entity).State = EntityState.Deleted;
+            return entity.Id == 0 ? DbSet.Add(entity).Entity : DbSet.Update(entity).Entity;
         }
 
         public void Remove(int id)

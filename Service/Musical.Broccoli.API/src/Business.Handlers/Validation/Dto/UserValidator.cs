@@ -38,7 +38,7 @@ namespace Business.Handlers.Validation.Dto
                 "Name is null or empty");
         }
 
-        public static UserValidator EmailNotEmty()
+        public static UserValidator EmailNotEmpty()
         {
             return Holds(x => !string.IsNullOrEmpty(x.Email), "Email is null or empty");
         }
@@ -47,6 +47,11 @@ namespace Business.Handlers.Validation.Dto
         {
             //TODO: Use Regex
             return Holds(x => !string.IsNullOrEmpty(x.Email) && x.Email.Contains("@"), "Email invalid format");
+        }
+
+        public static UserValidator PasswordNotEmpty()
+        {
+            return Holds(x => !string.IsNullOrEmpty(x.Password), "Password is Empty");
         }
 
         public static UserValidator PhoneNotEmty()
@@ -58,7 +63,7 @@ namespace Business.Handlers.Validation.Dto
 
         public static UserValidator All()
         {
-            return All(NameNotEmty(), EmailNotEmty(), EmailFormat(), PhoneNotEmty());
+            return All(NameNotEmty(), EmailNotEmpty(), EmailFormat(), PasswordNotEmpty(), PhoneNotEmty());
         }
 
         public static UserValidator All(params UserValidator[] validators)

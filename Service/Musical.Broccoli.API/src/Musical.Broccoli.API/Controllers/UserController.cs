@@ -1,4 +1,5 @@
 ﻿using System;
+using Business.Connectors.Response;
 using Business.Handlers.Handlers.contracts;
 using Business.Handlers.Request;
 using Business.Handlers.Response;
@@ -9,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Musical.Broccoli.API.Controllers
 {
     [Route("api/[controller]")]
-    public class UserController : Controller, IBaseController<UserDTO>
+    public class UserController : Controller
     {
         private readonly IUserRequestHandler _requestHandler;
 
@@ -28,7 +29,7 @@ namespace Musical.Broccoli.API.Controllers
             }
             catch (UnauthorizedAccessException)
             {
-                return new UnauthorizedResult();
+                return new ForbidResult();
             }
             catch (InvalidRequestException)
             {
@@ -51,9 +52,13 @@ namespace Musical.Broccoli.API.Controllers
             {
                 result = _requestHandler.HandleReadWriteRequest(request);
             }
-            catch (UnauthorizedAccessException)
+            catch (InternalServerErrorException)
             {
-                return new UnauthorizedResult();
+                return StatusCode(500);
+            }
+            catch (AuthenticationException)
+            {
+                return new ForbidResult();
             }
             catch (InvalidRequestException)
             {
@@ -63,6 +68,32 @@ namespace Musical.Broccoli.API.Controllers
             return new CreatedResult("", result);
         }
 
+        [HttpPost("login")]
+        public IActionResult Login([FromBody] ReadWriteRequest<UserDTO> request)
+        {
+            Response<SessionDTO> result;
+
+            try
+            {
+                result = _requestHandler.HandleLoginRequest(request);
+            }
+            catch (UnauthorizedAccessException)
+            {
+                return new ForbidResult();
+            }
+            catch (InvalidRequestException)
+            {
+                return new BadRequestResult();
+            }
+
+            if (result.Data.Count <= 0)
+            {
+                return new NotFoundObjectResult(result);
+            }
+
+            return new OkObjectResult(result);
+        }
+
         [HttpPut]
         public IActionResult Put([FromBody] ReadWriteRequest<UserDTO> request)
         {
@@ -70,9 +101,9 @@ namespace Musical.Broccoli.API.Controllers
             {
                 _requestHandler.HandleReadWriteRequest(request);
             }
-            catch (UnauthorizedAccessException)
+            catch (AuthenticationException)
             {
-                return new UnauthorizedResult();
+                return new ForbidResult();
             }
             catch (InvalidRequestException)
             {
@@ -89,9 +120,9 @@ namespace Musical.Broccoli.API.Controllers
             {
                 _requestHandler.HandleDeleteRequest(request);
             }
-            catch (UnauthorizedAccessException)
+            catch (AuthenticationException)
             {
-                return new UnauthorizedResult();
+                return new ForbidResult();
             }
             catch (InvalidRequestException)
             {

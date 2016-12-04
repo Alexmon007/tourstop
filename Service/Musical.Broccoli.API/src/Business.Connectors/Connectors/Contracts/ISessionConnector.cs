@@ -1,11 +1,12 @@
-﻿using Common.DTOs;
+﻿using System;
+using Business.Connectors.Petition;
+using Business.Connectors.Response;
+using Common.DTOs;
 
 namespace Business.Connectors.Contracts
 {
-    public interface ISessionConnector
+    public interface ISessionConnector : IBaseConnector<SessionDTO>
     {
-        SessionDTO Create(UserDTO userDto);
-
-        UserDTO Authenticate(string authToken);
+        new Func<ReadWriteBusinessPetition<UserDTO>, BusinessResponse<SessionDTO>> Save { get; }
     }
 }

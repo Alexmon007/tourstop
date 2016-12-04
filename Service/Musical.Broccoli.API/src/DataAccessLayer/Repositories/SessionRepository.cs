@@ -3,6 +3,7 @@ using System.Linq;
 using DataAccessLayer.Context;
 using DataAccessLayer.Entities;
 using DataAccessLayer.Repositories.Contracts;
+using Microsoft.EntityFrameworkCore;
 
 namespace DataAccessLayer.Repositories
 {
@@ -12,22 +13,9 @@ namespace DataAccessLayer.Repositories
         {
         }
 
-        public Session GetFullSession(int userId)
+        public new IQueryable<Session> GetQueryable()
         {
-            var session = GetbyKey(userId);
-
-            Context.Entry(session).Reference(x => x.User).Load();
-
-            return session;
-        }
-
-        public Session GetFullSession(Guid authToken)
-        {
-            var session = DbSet.First(x => x.AuthorizationToken.Equals(authToken));
-
-            Context.Entry(session).Reference(x => x.User).Load();
-
-            return session;
+            return DbSet.AsNoTracking().Include(x => x.User);
         }
     }
 }

@@ -9,7 +9,7 @@ namespace Business.Handlers.Handlers
 {
     public class MessageRequestHandler : BaseRequestHandler<MessageDTO>, IMessageRequestHandler
     {
-        public MessageRequestHandler(IBaseConnector<MessageDTO> connector, IRequestAuthenticator authenticator)
+        public MessageRequestHandler(IMessageConnector connector, IRequestAuthenticator authenticator)
             : base(connector, authenticator)
         {
         }

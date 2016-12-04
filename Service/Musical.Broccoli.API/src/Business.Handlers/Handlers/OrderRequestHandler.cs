@@ -9,7 +9,7 @@ namespace Business.Handlers.Handlers
 {
     public class OrderRequestHandler : BaseRequestHandler<OrderDTO>, IOrderRequestHandler
     {
-        public OrderRequestHandler(IBaseConnector<OrderDTO> connector, IRequestAuthenticator authenticator)
+        public OrderRequestHandler(IOrderConnector connector, IRequestAuthenticator authenticator)
             : base(connector, authenticator)
         {
         }

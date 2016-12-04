@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq.Dynamic.Core;
 using AutoMapper;
 using Business.Connectors.Contracts;
-using Business.Connectors.Exceptions;
 using Business.Connectors.Petition;
 using Business.Connectors.Response;
 using Common.DTOs;
@@ -39,7 +38,7 @@ namespace Business.Connectors
 
         #region Petition Processing
 
-        private BusinessResponse<TDto> ProcessGet(ReadBusinessPetition petition)
+        protected BusinessResponse<TDto> ProcessGet(ReadBusinessPetition petition)
         {
             if (!Validate(petition, ValidateGet)) throw new AuthenticationException();
 
@@ -48,38 +47,39 @@ namespace Business.Connectors
             {
                 var data = Repository.GetQueryable().Where(petition.FilterString);
                 businessResponse.Data = Mapper.Map<List<TDto>>(data);
-                businessResponse.IsSuccessful = true;
-            }
-            catch (Exception ex)
-            {
-                businessResponse.Exceptions = new List<Exception> {new InternalServerException(ex.Message)};
-                businessResponse.IsSuccessful = false;
-            }
-            return businessResponse;
-        }
-
-        private BusinessResponse<TDto> ProcessSave(ReadWriteBusinessPetition<TDto> petition)
-        {
-            if (!Validate(petition, ValidateSave)) throw new AuthenticationException();
-
-            var businessResponse = new BusinessResponse<TDto>();
-            try
-
-            {
-                var data = Mapper.Map<List<TEntity>>(petition.Data);
-                data.ForEach(x => Repository.AddOrUpdate(x));
-                Repository.SaveChanges();
-                businessResponse.IsSuccessful = true;
             }
             catch (Exception)
             {
                 throw new InternalServerErrorException();
             }
-            return
-                businessResponse;
+            return businessResponse;
         }
 
-        private BusinessResponse<TDto> ProcessDelete(ReadWriteBusinessPetition<TDto> petition)
+        protected BusinessResponse<TDto> ProcessSave(ReadWriteBusinessPetition<TDto> petition)
+        {
+            if (!Validate(petition, ValidateSave)) throw new AuthenticationException();
+
+            var businessResponse = new BusinessResponse<TDto>();
+
+            try
+            {
+                var data = Mapper.Map<List<TEntity>>(petition.Data);
+                var savedData = new List<TEntity>();
+
+                data.ForEach(x => savedData.Add(Repository.AddOrUpdate(x)));
+                Repository.SaveChanges();
+
+                businessResponse.Data = Mapper.Map<List<TDto>>(savedData);
+            }
+            catch (Exception)
+            {
+                throw new InternalServerErrorException();
+            }
+
+            return businessResponse;
+        }
+
+        protected BusinessResponse<TDto> ProcessDelete(ReadWriteBusinessPetition<TDto> petition)
         {
             if (!Validate(petition, ValidateDelete)) throw new AuthenticationException();
 
@@ -91,10 +91,9 @@ namespace Business.Connectors
                 Repository.SaveChanges();
                 businessResponse.IsSuccessful = true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                businessResponse.Exceptions = new List<Exception> {new InternalServerException(ex.Message)};
-                businessResponse.IsSuccessful = false;
+                throw new InternalServerErrorException();
             }
 
             return businessResponse;
@@ -104,7 +103,7 @@ namespace Business.Connectors
 
         #region Validation Methods
 
-        private static bool Validate<T>(T petition, ValidatePetition<T> validator) where T : BusinessPetition
+        protected static bool Validate<T>(T petition, ValidatePetition<T> validator) where T : BusinessPetition
         {
             return validator.Invoke(petition);
         }

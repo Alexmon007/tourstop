@@ -107,7 +107,7 @@ namespace DataAccessLayer.Context
 
             #region SessionConfig
 
-            modelBuilder.Entity<Session>().HasAlternateKey(x => x.AuthorizationToken);
+            modelBuilder.Entity<Session>().HasAlternateKey(x => x.AuthToken);
 
             #endregion
         }

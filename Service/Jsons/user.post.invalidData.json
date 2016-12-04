@@ -1,0 +1,22 @@
+{
+	"data":[
+		{
+			"FirstName": "",
+            "LastName" : "",
+            "Email"    : "fooReadWrite@bar.com",
+            "Password" : "",
+            "Phone"    : "",
+            "Address"  : {
+				"City"      : "City",
+				"Name"      : "Name",
+				"PostalCode": "2245",
+				"State"     : "State",
+				"Street1"   : "Street1",
+				"Street2"   : "Street2"
+
+			}
+
+		}
+	],
+	"authtoken":"1233"
+}

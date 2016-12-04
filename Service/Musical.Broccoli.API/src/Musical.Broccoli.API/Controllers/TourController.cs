@@ -8,27 +8,27 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Musical.Broccoli.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route( "api/[controller]" )]
     public class TourController : Controller, IBaseController<TourDTO>
     {
         private readonly ITourRequestHandler _requestHandler;
 
-        public TourController(ITourRequestHandler requestHandler)
+        public TourController( ITourRequestHandler requestHandler )
         {
             _requestHandler = requestHandler;
         }
 
         [HttpGet]
-        public IActionResult Get([FromBody] ReadRequest request)
+        public IActionResult Get( [FromBody] ReadRequest request )
         {
             Response<TourDTO> result;
             try
             {
-                result = _requestHandler.HandleReadRequest(request);
+                result = _requestHandler.HandleReadRequest( request );
             }
-            catch (UnauthorizedAccessException)
+            catch (AuthenticationException)
             {
-                return new UnauthorizedResult();
+                return new ForbidResult();
             }
             catch (InvalidRequestException)
             {
@@ -37,42 +37,42 @@ namespace Musical.Broccoli.API.Controllers
 
             if (result.Data.Count <= 0)
             {
-                return new NotFoundObjectResult(result);
+                return new NotFoundObjectResult( result );
             }
-            return new OkObjectResult(result);
+            return new OkObjectResult( result );
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] ReadWriteRequest<TourDTO> request)
+        public IActionResult Post( [FromBody] ReadWriteRequest<TourDTO> request )
         {
             Response<TourDTO> result;
 
             try
             {
-                result = _requestHandler.HandleReadWriteRequest(request);
+                result = _requestHandler.HandleReadWriteRequest( request );
             }
-            catch (UnauthorizedAccessException)
+            catch (AuthenticationException)
             {
-                return new UnauthorizedResult();
+                return new ForbidResult();
             }
             catch (InvalidRequestException)
             {
                 return new BadRequestResult();
             }
 
-            return new CreatedResult("", result);
+            return new CreatedResult( "", result );
         }
 
         [HttpPut]
-        public IActionResult Put([FromBody] ReadWriteRequest<TourDTO> request)
+        public IActionResult Put( [FromBody] ReadWriteRequest<TourDTO> request )
         {
             try
             {
-                _requestHandler.HandleReadWriteRequest(request);
+                _requestHandler.HandleReadWriteRequest( request );
             }
-            catch (UnauthorizedAccessException)
+            catch (AuthenticationException)
             {
-                return new UnauthorizedResult();
+                return new ForbidResult();
             }
             catch (InvalidRequestException)
             {
@@ -83,15 +83,15 @@ namespace Musical.Broccoli.API.Controllers
         }
 
         [HttpDelete]
-        public IActionResult Delete([FromBody] ReadWriteRequest<TourDTO> request)
+        public IActionResult Delete( [FromBody] ReadWriteRequest<TourDTO> request )
         {
             try
             {
-                _requestHandler.HandleDeleteRequest(request);
+                _requestHandler.HandleDeleteRequest( request );
             }
-            catch (UnauthorizedAccessException)
+            catch (AuthenticationException)
             {
-                return new UnauthorizedResult();
+                return new ForbidResult();
             }
             catch (InvalidRequestException)
             {

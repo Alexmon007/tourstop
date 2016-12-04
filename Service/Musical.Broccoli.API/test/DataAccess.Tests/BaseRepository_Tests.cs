@@ -46,20 +46,19 @@ namespace DataAccess.Tests
         {
             var options = new DbContextOptionsBuilder<TourStopContext>()
                 .UseInMemoryDatabase("Update_Test_TourStop_Db").Options;
-
+            User existentUser;
             using (var context = new TourStopContext(options))
             {
-                context.Users.Add(new User {Email = "fooUpdate@bar.com", FirstName = "Update"});
+                existentUser = context.Users.Add(new User {Email = "fooUpdate@bar.com", FirstName = "Update"}).Entity;
                 context.SaveChanges();
             }
 
             using (var context = new TourStopContext(options))
             {
                 var repository = new UserRepository(context);
-                var user = repository.GetQueryable().Single();
 
-                user.FirstName = "Updated";
-                repository.AddOrUpdate(user);
+                existentUser.FirstName = "Updated";
+                repository.AddOrUpdate(existentUser);
                 repository.SaveChanges();
             }
 
@@ -75,10 +74,10 @@ namespace DataAccess.Tests
         {
             var options = new DbContextOptionsBuilder<TourStopContext>()
                 .UseInMemoryDatabase("Delete_Test_TourStop_Db").Options;
-
+            int userId;
             using (var context = new TourStopContext(options))
             {
-                context.Users.Add(new User {Email = "fooDelete1@bar.com"});
+                userId = context.Users.Add(new User {Email = "fooDelete1@bar.com"}).Entity.Id;
                 context.Users.Add(new User {Email = "fooDelete2@bar.com"});
                 context.Users.Add(new User {Email = "fooDelete3@bar.com"});
 
@@ -89,9 +88,7 @@ namespace DataAccess.Tests
             {
                 var repository = new UserRepository(context);
 
-                var user = repository.GetQueryable().Where(x => x.Email == "fooDelete1@bar.com").Single();
-
-                repository.Remove(user);
+                repository.Remove(userId);
                 repository.SaveChanges();
             }
 
@@ -119,7 +116,7 @@ namespace DataAccess.Tests
             using (var context = new TourStopContext(options))
             {
                 var repository = new UserRepository(context);
-                Assert.Equal(2, repository.GetAll().Count);
+                Assert.Equal(2, repository.GetAll().Count());
             }
         }
     }
