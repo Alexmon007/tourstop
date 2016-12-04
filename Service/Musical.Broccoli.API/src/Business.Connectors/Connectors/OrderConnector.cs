@@ -5,6 +5,7 @@ using Business.Connectors.Petition;
 using Common.DTOs;
 using DataAccessLayer.Entities;
 using DataAccessLayer.Repositories.Contracts;
+using System.Text.RegularExpressions;
 
 namespace Business.Connectors
 {
@@ -18,7 +19,11 @@ namespace Business.Connectors
 
         protected override bool ValidateGet(ReadBusinessPetition petition)
         {
-            return petition.RequestingUser != null ; //TODO: Really only the owner user can see the Order THINK MY FRIEND
+            if (string.IsNullOrEmpty(petition.FilterString)) { return false; }
+            var matches = Regex.Matches(petition.FilterString, @"[UserId=](\d*.)", RegexOptions.ExplicitCapture);
+            return petition.RequestingUser != null &&
+                matches.Count == 4 &&
+                petition.FilterString.Contains(string.Format("UserId = {0}", petition.RequestingUser.Id)); //TODO: Really only the owner user can see the Order THINK MY FRIEND
         }
 
         protected override bool ValidateSave(ReadWriteBusinessPetition<OrderDTO> petition)
@@ -28,7 +33,7 @@ namespace Business.Connectors
 
         protected override bool ValidateDelete(ReadWriteBusinessPetition<OrderDTO> petition)
         {
-            return petition.RequestingUser != null && petition.Data.All(x => x.UserId == petition.RequestingUser.Id);
+            return false;
         }
 
         #endregion
