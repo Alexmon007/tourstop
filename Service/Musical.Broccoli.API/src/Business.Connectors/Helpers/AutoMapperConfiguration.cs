@@ -12,77 +12,77 @@ namespace Business.Connectors.Helpers
             #region Address
 
             CreateMap<Address, AddressDTO>();
-            CreateMap<AddressDTO, Address>().ForMember(x => x.Id, y => y.Ignore());
+            CreateMap<AddressDTO, Address>();
 
             #endregion
 
             #region Checkpoint
 
             CreateMap<CheckPoint, CheckPointDTO>();
-            CreateMap<CheckPointDTO, CheckPoint>().ForMember(x => x.Id, y => y.Ignore());
+            CreateMap<CheckPointDTO, CheckPoint>();
 
             #endregion
 
             #region Message
 
-            CreateMap<Message, TourDTO>();
-            CreateMap<TourDTO, Message>().ForMember(x => x.Id, y => y.Ignore());
+            CreateMap<Message, TourDTO>().MaxDepth(3);
+            CreateMap<TourDTO, Message>().MaxDepth(3);
 
             #endregion
 
             #region Movement
 
-            CreateMap<Movement, MovementDTO>();
-            CreateMap<MovementDTO, Movement>().ForMember(x => x.Id, y => y.Ignore());
+            CreateMap<Movement, MovementDTO>().MaxDepth(3);
+            CreateMap<MovementDTO, Movement>().MaxDepth(3);
 
             #endregion
 
             #region Order
 
-            CreateMap<Order, OrderDTO>();
-            CreateMap<OrderDTO, Order>().ForMember(x => x.Id, y => y.Ignore());
+            CreateMap<Order, OrderDTO>().MaxDepth(3);
+            CreateMap<OrderDTO, Order>().MaxDepth(3);
 
             #endregion
 
             #region PaymentInfo
 
             CreateMap<PaymentInfo, PaymentInfoDTO>();
-            CreateMap<PaymentInfoDTO, PaymentInfo>().ForMember(x => x.Id, y => y.Ignore());
+            CreateMap<PaymentInfoDTO, PaymentInfo>();
 
             #endregion
 
             #region Promotion
 
             CreateMap<Promotion, PromotionDTO>();
-            CreateMap<PromotionDTO, Promotion>().ForMember(x => x.Id, y => y.Ignore());
+            CreateMap<PromotionDTO, Promotion>();
 
             #endregion
 
             #region Rating
 
             CreateMap<Rating, RatingDTO>();
-            CreateMap<RatingDTO, Rating>().ForMember(x => x.Id, y => y.Ignore());
+            CreateMap<RatingDTO, Rating>();
 
             #endregion
 
             #region Reservation
 
-            CreateMap<Reservation, ReservationDTO>();
-            CreateMap<ReservationDTO, Reservation>().ForMember(x => x.Id, y => y.Ignore());
+            CreateMap<Reservation, ReservationDTO>().MaxDepth(3);
+            CreateMap<ReservationDTO, Reservation>().MaxDepth(3);
 
             #endregion
 
             #region Tour
 
-            CreateMap<Tour, TourDTO>();
-            CreateMap<TourDTO, Tour>().ForMember(x => x.Id, y => y.Ignore());
+            CreateMap<Tour, TourDTO>().MaxDepth(3);
+            CreateMap<TourDTO, Tour>().MaxDepth(3);
 
             #endregion
 
             #region User
 
-            CreateMap<User, UserDTO>();
-            CreateMap<UserDTO, User>();
+            CreateMap<User, UserDTO>().MaxDepth(3);
+            CreateMap<UserDTO, User>().MaxDepth(3);
 
             #endregion
 

@@ -24,12 +24,15 @@ namespace Business.Connectors
 
         protected override bool ValidateSave(ReadWriteBusinessPetition<TourDTO> petition)
         {
-            return petition.RequestingUser.UserType == UserType.Promoter;
+            return petition.RequestingUser != null && petition.Data != null &&
+                (petition.Data.All(x => x.Id == 0) || petition.Data.All(x => x.UserId == petition.RequestingUser.Id))
+                   && petition.RequestingUser.UserType == UserType.Promoter;
         }
 
         protected override bool ValidateDelete(ReadWriteBusinessPetition<TourDTO> petition)
         {
-            return petition.Data.All(x => x.User.Id == petition.RequestingUser.Id);
+            return petition.RequestingUser != null && petition.Data != null &&
+                petition.Data.All(x => x.UserId == petition.RequestingUser.Id);
         }
 
         #endregion
