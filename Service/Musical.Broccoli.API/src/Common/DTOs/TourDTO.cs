@@ -12,10 +12,8 @@ namespace Common.DTOs
         public bool Status { get; set; }
         public DateTime DateModified { get; set; }
         public DateTime DateCreated { get; set; }
-        public int PromotionId { get; set; }
         public int UserId { get; set; }
 
-        public PromotionDTO Promotion { get; set; }
         public UserDTO User { get; set; }
         public ICollection<ReservationDTO> Reservations { get; set; }
         public ICollection<RatingDTO> Ratings { get; set; }

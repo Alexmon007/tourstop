@@ -1,7 +1,11 @@
-﻿using AutoMapper;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using AutoMapper;
 using Business.Connectors.Helpers;
 using Business.Connectors.Petition;
 using Common.DTOs;
+using Common.Enums;
 using Common.Exceptions;
 using DataAccessLayer.Context;
 using DataAccessLayer.Entities;
@@ -9,10 +13,6 @@ using DataAccessLayer.Repositories;
 using DataAccessLayer.Repositories.Contracts;
 using Microsoft.EntityFrameworkCore;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace Business.Connectors.Tests.ConnectorsTests
@@ -30,7 +30,7 @@ namespace Business.Connectors.Tests.ConnectorsTests
         #region Get
 
         [Fact]
-        public void Get_NoFiltersNoUser_ThrowsAuthenticationException()
+        public void Get_NotFiltersNoUser_ThrowsAuthenticationException()
         {
             var mapperConfiguration = new MapperConfiguration(x => x.AddProfile(new AutoMapperConfiguration()));
             var mapper = mapperConfiguration.CreateMapper();
@@ -52,16 +52,36 @@ namespace Business.Connectors.Tests.ConnectorsTests
             var mapperConfiguration = new MapperConfiguration(x => x.AddProfile(new AutoMapperConfiguration()));
             var mapper = mapperConfiguration.CreateMapper();
             var options = new DbContextOptionsBuilder<TourStopContext>()
-                .UseInMemoryDatabase("Get_TourStop_Db")
+                .UseInMemoryDatabase("Tour_Get_TourStop_Db")
                 .Options;
 
             //Add some Registries
             using (var context = new TourStopContext(options))
             {
-
-                context.Add(new Tour { Title = "Tour1", MaxReservation = 10, Status = true, DateCreated = System.DateTime.Now, User = new User { Email = "foo1@bar.com" } });
-                context.Add(new Tour { Title = "Tour2", MaxReservation = 10, Status = true, DateCreated = System.DateTime.Now, User = new User { Email = "foo2@bar.com" } });
-                context.Add(new Tour { Title = "Tour3", MaxReservation = 10, Status = true, DateCreated = System.DateTime.Now, User = new User { Email = "foo3@bar.com" } });
+                context.Add(new Tour
+                {
+                    Title = "Tour1",
+                    MaxReservation = 10,
+                    Status = true,
+                    DateCreated = DateTime.Now,
+                    User = new User {Email = "foo1@bar.com"}
+                });
+                context.Add(new Tour
+                {
+                    Title = "Tour2",
+                    MaxReservation = 10,
+                    Status = true,
+                    DateCreated = DateTime.Now,
+                    User = new User {Email = "foo2@bar.com"}
+                });
+                context.Add(new Tour
+                {
+                    Title = "Tour3",
+                    MaxReservation = 10,
+                    Status = true,
+                    DateCreated = DateTime.Now,
+                    User = new User {Email = "foo3@bar.com"}
+                });
                 context.SaveChanges();
             }
 
@@ -90,6 +110,7 @@ namespace Business.Connectors.Tests.ConnectorsTests
         }
 
         #endregion
+
         #region Save
 
         [Fact]
@@ -98,12 +119,12 @@ namespace Business.Connectors.Tests.ConnectorsTests
             var mapperConfiguration = new MapperConfiguration(x => x.AddProfile(new AutoMapperConfiguration()));
             var mapper = mapperConfiguration.CreateMapper();
             var options = new DbContextOptionsBuilder<TourStopContext>()
-                .UseInMemoryDatabase("SaveNoUser_TourStop_Db")
+                .UseInMemoryDatabase("Tour_SaveNoUser_TourStop_Db")
                 .Options;
 
             using (var context = new TourStopContext(options))
             {
-                var user = new User { Email = "foo1@bar.com", UserType = Common.Enums.UserType.Promoter };
+                var user = new User {Email = "foo1@bar.com", UserType = UserType.Promoter};
                 context.Add(user);
                 context.SaveChanges();
                 var repository = new TourRepository(context);
@@ -114,57 +135,61 @@ namespace Business.Connectors.Tests.ConnectorsTests
                     Action = PetitionAction.ReadWrite,
                     Data = new List<TourDTO>
                     {
-                        new TourDTO { Title = "Tour1", MaxReservation = 10, Status = true, DateCreated = System.DateTime.Now, UserId=user.Id}
+                        new TourDTO
+                        {
+                            Title = "Tour1",
+                            MaxReservation = 10,
+                            Status = true,
+                            DateCreated = DateTime.Now,
+                            UserId = user.Id
+                        }
                     },
-                    RequestingUser = new UserDTO { Id = user.Id, UserType= user.UserType}
-
+                    RequestingUser = new UserDTO {Id = user.Id, UserType = user.UserType}
                 };
                 connector.Save(petition);
             }
-                using (var context = new TourStopContext(options))
-                {
-                    Assert.Equal(1, context.Tours.Count());
-                   
-                }
-            
-        }
-        [Fact]
-        public void Save_ValidDataNoUser_Exception()
-        {
-            var mapperConfiguration = new MapperConfiguration(x => x.AddProfile(new AutoMapperConfiguration()));
-            var mapper = mapperConfiguration.CreateMapper();
-            var options = new DbContextOptionsBuilder<TourStopContext>()
-                .UseInMemoryDatabase("SaveNoUser_TourStop_Db")
-                .Options;
-
             using (var context = new TourStopContext(options))
             {
-
-                var repository = new TourRepository(context);
-                var connector = new TourConnector(repository, mapper);
-
-                var petition = new ReadWriteBusinessPetition<TourDTO>
-                {
-                    Action = PetitionAction.ReadWrite,
-                    Data = new List<TourDTO>
-                        {
-                            new TourDTO { Title = "Tour1", MaxReservation = 10, Status = true, DateCreated = System.DateTime.Now, User = new UserDTO { Email = "foo1@bar.com" }}
-                        }
-                };
-
-                Assert.Throws<AuthenticationException>(() => connector.Save(petition));
+                Assert.Equal(1, context.Tours.Count());
             }
         }
 
-        
+        [Fact]
+        public void Save_ValidDataNoUser_ThrowsAuthenticationException()
+        {
+            var mapperConfiguration = new MapperConfiguration(x => x.AddProfile(new AutoMapperConfiguration()));
+            var mapper = mapperConfiguration.CreateMapper();
+
+            var repositoryMock = new Mock<ITourRepository>();
+            var connector = new TourConnector(repositoryMock.Object, mapper);
+
+            var petition = new ReadWriteBusinessPetition<TourDTO>
+            {
+                Action = PetitionAction.ReadWrite,
+                Data = new List<TourDTO>
+                {
+                    new TourDTO
+                    {
+                        Title = "Tour1",
+                        MaxReservation = 10,
+                        Status = true,
+                        DateCreated = DateTime.Now,
+                        User = new UserDTO {Email = "foo1@bar.com"}
+                    }
+                }
+            };
+
+            Assert.Throws<AuthenticationException>(() => connector.Save(petition));
+        }
 
         [Fact]
         public void Update_ValidDataValidUser_NoException()
         {
             var mapperConfiguration = new MapperConfiguration(x => x.AddProfile(new AutoMapperConfiguration()));
             var mapper = mapperConfiguration.CreateMapper();
+
             var options = new DbContextOptionsBuilder<TourStopContext>()
-                .UseInMemoryDatabase("UpdateValid_TourStop_Db")
+                .UseInMemoryDatabase("Tour_UpdateValid_TourStop_Db")
                 .Options;
 
             Tour originalEntity;
@@ -172,14 +197,36 @@ namespace Business.Connectors.Tests.ConnectorsTests
             //Add some Registries
             using (var context = new TourStopContext(options))
             {
-                originalEntity = context.Add(new Tour { Title = "Tour1", MaxReservation = 10, Status = true, DateCreated = System.DateTime.Now, User = new User { Email = "foo1@bar.com" } }).Entity;
-                context.Add(new Tour { Title = "Tour2", MaxReservation = 10, Status = true, DateCreated = System.DateTime.Now, User = new User { Email = "foo2@bar.com" } });
-                context.Add(new Tour { Title = "Tour3", MaxReservation = 10, Status = true, DateCreated = System.DateTime.Now, User = new User { Email = "foo3@bar.com" } });
+                originalEntity = context.Add(new Tour
+                {
+                    Title = "Tour1",
+                    MaxReservation = 10,
+                    Status = true,
+                    DateCreated = DateTime.Now,
+                    User = new User {Email = "foo1@bar.com"}
+                }).Entity;
+                context.Add(new Tour
+                {
+                    Title = "Tour2",
+                    MaxReservation = 10,
+                    Status = true,
+                    DateCreated = DateTime.Now,
+                    User = new User {Email = "foo2@bar.com"}
+                });
+                context.Add(new Tour
+                {
+                    Title = "Tour3",
+                    MaxReservation = 10,
+                    Status = true,
+                    DateCreated = DateTime.Now,
+                    User = new User {Email = "foo3@bar.com"}
+                });
                 context.SaveChanges();
             }
 
             var mappedDto = mapper.Map<TourDTO>(originalEntity);
-            mappedDto.Title = "UpdatedTour";
+            mappedDto.Title
+                = "UpdatedTour";
 
             using (var context = new TourStopContext(options))
             {
@@ -192,7 +239,7 @@ namespace Business.Connectors.Tests.ConnectorsTests
                     {
                         mappedDto
                     },
-                    RequestingUser = new UserDTO { Id=1,UserType=Common.Enums.UserType.Promoter}
+                    RequestingUser = new UserDTO {Id = 1, UserType = UserType.Promoter}
                 };
 
                 connector.Save(petition);
@@ -210,38 +257,24 @@ namespace Business.Connectors.Tests.ConnectorsTests
         {
             var mapperConfiguration = new MapperConfiguration(x => x.AddProfile(new AutoMapperConfiguration()));
             var mapper = mapperConfiguration.CreateMapper();
-            var options = new DbContextOptionsBuilder<TourStopContext>()
-                .UseInMemoryDatabase("UpdateInvalidUser_TourStop_Db")
-                .Options;
 
-            Tour originalEntity;
+            var repositoryMock = new Mock<ITourRepository>();
+            var connector = new TourConnector(repositoryMock.Object, mapper);
 
-            //Add some Registries
-            using (var context = new TourStopContext(options))
+            var petition = new ReadWriteBusinessPetition<TourDTO>
             {
-                originalEntity = context.Add(new Tour { Title = "Tour1", MaxReservation = 10, Status = true, DateCreated = System.DateTime.Now, User = new User { Email = "foo1@bar.com" } }).Entity;
-                context.Add(new Tour { Title = "Tour2", MaxReservation = 10, Status = true, DateCreated = System.DateTime.Now, User = new User { Email = "foo2@bar.com" } });
-                context.Add(new Tour { Title = "Tour3", MaxReservation = 10, Status = true, DateCreated = System.DateTime.Now, User = new User { Email = "foo3@bar.com" } });
-                context.SaveChanges();
-            }
-
-            var mappedDto = mapper.Map<TourDTO>(originalEntity);
-            mappedDto.Title = "UpdatedTour";
-
-            using (var context = new TourStopContext(options))
-            {
-                var repository = new TourRepository(context);
-                var connector = new TourConnector(repository, mapper);
-
-                var petition = new ReadWriteBusinessPetition<TourDTO>
+                Data = new List<TourDTO>
                 {
-                    Data = new List<TourDTO>
+                    new TourDTO
                     {
-                        mappedDto
+                        Id = 1,
+                        MaxReservation = new Random().Next(),
+                        ReservationPrice = new Random().Next(),
+                        UserId = 1
                     }
-                };
+                }
+            };
             Assert.Throws<AuthenticationException>(() => connector.Save(petition));
-            }
         }
 
         [Fact]
@@ -249,42 +282,26 @@ namespace Business.Connectors.Tests.ConnectorsTests
         {
             var mapperConfiguration = new MapperConfiguration(x => x.AddProfile(new AutoMapperConfiguration()));
             var mapper = mapperConfiguration.CreateMapper();
-            var options = new DbContextOptionsBuilder<TourStopContext>()
-                .UseInMemoryDatabase("UpdateValid_TourStop_Db")
-                .Options;
 
-            Tour originalEntity;
+            var repositoryMock = new Mock<ITourRepository>();
+            var connector = new TourConnector(repositoryMock.Object, mapper);
 
-            //Add some Registries
-            using (var context = new TourStopContext(options))
+            var petition = new ReadWriteBusinessPetition<TourDTO>
             {
-                originalEntity = context.Add(new Tour { Title = "Tour1", MaxReservation = 10, Status = true, DateCreated = System.DateTime.Now, User = new User { Email = "foo1@bar.com" } }).Entity;
-                context.Add(new Tour { Title = "Tour2", MaxReservation = 10, Status = true, DateCreated = System.DateTime.Now, User = new User { Email = "foo2@bar.com" } });
-                context.Add(new Tour { Title = "Tour3", MaxReservation = 10, Status = true, DateCreated = System.DateTime.Now, User = new User { Email = "foo3@bar.com" } });
-                context.SaveChanges();
-            }
-
-            var mappedDto = mapper.Map<TourDTO>(originalEntity);
-            mappedDto.Title = "UpdatedTour";
-
-            using (var context = new TourStopContext(options))
-            {
-                var repository = new TourRepository(context);
-                var connector = new TourConnector(repository, mapper);
-
-                var petition = new ReadWriteBusinessPetition<TourDTO>
+                Data = new List<TourDTO>
                 {
-                    Data = new List<TourDTO>
+                    new TourDTO
                     {
-                        mappedDto
-                    },
-                    RequestingUser = new UserDTO { Id = 1, UserType = Common.Enums.UserType.User }
-                };
+                        Id = 1,
+                        MaxReservation = new Random().Next(),
+                        ReservationPrice = new Random().Next(),
+                        UserId = 1
+                    }
+                },
+                RequestingUser = new UserDTO {Id = 1, UserType = UserType.User}
+            };
 
-                Assert.Throws<AuthenticationException>(() => connector.Save(petition));
-            }
-
-           
+            Assert.Throws<AuthenticationException>(() => connector.Save(petition));
         }
 
         #endregion
@@ -292,7 +309,8 @@ namespace Business.Connectors.Tests.ConnectorsTests
         #region Delete
 
         [Fact]
-        public void Delete_ValidDataNoUser_ThrowAuthenticationException()
+        public
+            void Delete_ValidDataNoUser_ThrowAuthenticationException()
         {
             var mapperConfiguration = new MapperConfiguration(x => x.AddProfile(new AutoMapperConfiguration()));
             var mapper = mapperConfiguration.CreateMapper();
@@ -316,24 +334,47 @@ namespace Business.Connectors.Tests.ConnectorsTests
         }
 
         [Fact]
-        public void Delete_ValidDataValidUser_NoException()
+        public
+            void Delete_ValidDataValidUser_NoException()
         {
             var mapperConfiguration = new MapperConfiguration(x => x.AddProfile(new AutoMapperConfiguration()));
             var mapper = mapperConfiguration.CreateMapper();
+
             var options = new DbContextOptionsBuilder<TourStopContext>()
-                .UseInMemoryDatabase("DeleteValidUser_TourStop_Db")
+                .UseInMemoryDatabase("Tour_DeleteValidUser_TourStop_Db")
                 .Options;
 
-            int entityId,userId;
+            int entityId, userId;
 
             //Add some Registries
             using (var context = new TourStopContext(options))
             {
-                var user = new User { Email = "foo1@bar.com", UserType = Common.Enums.UserType.Promoter };
-                userId =context.Add(user).Entity.Id;
-                entityId = context.Add(new Tour { Title = "Tour1", MaxReservation = 10, Status = true, DateCreated = System.DateTime.Now, User = user }).Entity.Id;
-                context.Add(new Tour { Title = "Tour2", MaxReservation = 10, Status = true, DateCreated = System.DateTime.Now, User = new User { Email = "foo2@bar.com" } });
-                context.Add(new Tour { Title = "Tour3", MaxReservation = 10, Status = true, DateCreated = System.DateTime.Now, User = new User { Email = "foo3@bar.com" } });
+                var user = new User {Email = "foo1@bar.com", UserType = UserType.Promoter};
+                userId = context.Add(user).Entity.Id;
+                entityId = context.Add(new Tour
+                {
+                    Title = "Tour1",
+                    MaxReservation = 10,
+                    Status = true,
+                    DateCreated = DateTime.Now,
+                    User = user
+                }).Entity.Id;
+                context.Add(new Tour
+                {
+                    Title = "Tour2",
+                    MaxReservation = 10,
+                    Status = true,
+                    DateCreated = DateTime.Now,
+                    User = new User {Email = "foo2@bar.com"}
+                });
+                context.Add(new Tour
+                {
+                    Title = "Tour3",
+                    MaxReservation = 10,
+                    Status = true,
+                    DateCreated = DateTime.Now,
+                    User = new User {Email = "foo3@bar.com"}
+                });
                 context.SaveChanges();
             }
             using (var context = new TourStopContext(options))
@@ -349,7 +390,7 @@ namespace Business.Connectors.Tests.ConnectorsTests
                         new TourDTO
                         {
                             Id = entityId,
-                            UserId=userId
+                            UserId = userId
                         }
                     },
                     RequestingUser = new UserDTO
@@ -360,7 +401,6 @@ namespace Business.Connectors.Tests.ConnectorsTests
 
                 connector.Delete(petition);
             }
-
             using (var context = new TourStopContext(options))
             {
                 Assert.Equal(2, context.Tours.Count());
@@ -385,7 +425,7 @@ namespace Business.Connectors.Tests.ConnectorsTests
                     new TourDTO
                     {
                         Id = 1,
-                        UserId=1
+                        UserId = 1
                     }
                 },
                 RequestingUser = new UserDTO

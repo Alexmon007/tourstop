@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Business.Handlers.Validation
+﻿namespace Business.Handlers.Validation
 {
     public class ValidationResult
     {

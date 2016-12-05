@@ -140,5 +140,7 @@
 -r:"C:\Users\lucia.beltran\Desktop\Picho\Projects\Skul\tourstop\Service\Musical.Broccoli.API\src\Business.Connectors\bin\Debug\netstandard1.6\Business.Connectors.dll"
 -r:"C:\Users\lucia.beltran\Desktop\Picho\Projects\Skul\tourstop\Service\Musical.Broccoli.API\src\Common\bin\Debug\netstandard1.6\Common.dll"
 -r:"C:\Users\lucia.beltran\Desktop\Picho\Projects\Skul\tourstop\Service\Musical.Broccoli.API\src\DataAccessLayer\bin\Debug\netstandard1.6\DataAccessLayer.dll"
+"C:\Users\lucia.beltran\Desktop\Picho\Projects\Skul\tourstop\Service\Musical.Broccoli.API\test\Business.Connectors.Tests\ConnectorsTests\OrderConnector_Tests.cs"
+"C:\Users\lucia.beltran\Desktop\Picho\Projects\Skul\tourstop\Service\Musical.Broccoli.API\test\Business.Connectors.Tests\ConnectorsTests\TourConnector_Tests.cs"
 "C:\Users\lucia.beltran\Desktop\Picho\Projects\Skul\tourstop\Service\Musical.Broccoli.API\test\Business.Connectors.Tests\ConnectorsTests\UserConnector_Tests.cs"
 "C:\Users\lucia.beltran\Desktop\Picho\Projects\Skul\tourstop\Service\Musical.Broccoli.API\test\Business.Connectors.Tests\Properties\AssemblyInfo.cs"

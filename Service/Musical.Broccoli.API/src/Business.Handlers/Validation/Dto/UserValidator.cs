@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using Common.DTOs;
-using Common.Enums;
 
 namespace Business.Handlers.Validation.Dto
 {

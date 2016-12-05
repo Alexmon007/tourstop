@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using DataAccessLayer.Context;
 using DataAccessLayer.Entities;
 using DataAccessLayer.Repositories.Contracts;

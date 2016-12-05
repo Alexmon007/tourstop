@@ -51,7 +51,7 @@ namespace Business.Connectors.Tests.ConnectorsTests
             var mapperConfiguration = new MapperConfiguration(x => x.AddProfile(new AutoMapperConfiguration()));
             var mapper = mapperConfiguration.CreateMapper();
             var options = new DbContextOptionsBuilder<TourStopContext>()
-                .UseInMemoryDatabase("Get_TourStop_Db")
+                .UseInMemoryDatabase("User_Get_TourStop_Db")
                 .Options;
 
             //Add some Registries
@@ -97,7 +97,7 @@ namespace Business.Connectors.Tests.ConnectorsTests
             var mapperConfiguration = new MapperConfiguration(x => x.AddProfile(new AutoMapperConfiguration()));
             var mapper = mapperConfiguration.CreateMapper();
             var options = new DbContextOptionsBuilder<TourStopContext>()
-                .UseInMemoryDatabase("SaveNoUser_TourStop_Db")
+                .UseInMemoryDatabase("User_SaveNoUser_TourStop_Db")
                 .Options;
 
             using (var context = new TourStopContext(options))
@@ -130,7 +130,7 @@ namespace Business.Connectors.Tests.ConnectorsTests
             var mapperConfiguration = new MapperConfiguration(x => x.AddProfile(new AutoMapperConfiguration()));
             var mapper = mapperConfiguration.CreateMapper();
             var options = new DbContextOptionsBuilder<TourStopContext>()
-                .UseInMemoryDatabase("UpdateValid_TourStop_Db")
+                .UseInMemoryDatabase("User_UpdateValid_TourStop_Db")
                 .Options;
 
             User originalEntity;
@@ -176,39 +176,25 @@ namespace Business.Connectors.Tests.ConnectorsTests
         {
             var mapperConfiguration = new MapperConfiguration(x => x.AddProfile(new AutoMapperConfiguration()));
             var mapper = mapperConfiguration.CreateMapper();
-            var options = new DbContextOptionsBuilder<TourStopContext>()
-                .UseInMemoryDatabase("UpdateInvalidUser_TourStop_Db")
-                .Options;
+            var repositoryMock = new Mock<IUserRepository>();
 
-            User originalEntity;
+            var connector = new UserConnector(repositoryMock.Object, mapper);
 
-            //Add some Registries
-            using (var context = new TourStopContext(options))
+            var petition = new ReadWriteBusinessPetition<UserDTO>
             {
-                originalEntity = context.Add(new User {Email = "fooUpdateNoValidUser1@bar.com"}).Entity;
-                context.Add(new User {Email = "fooUpdateNoValidUser2@bar.com"});
-                context.Add(new User {Email = "fooUpdateNoValidUser3@bar.com"});
-                context.SaveChanges();
-            }
-
-            var mappedDto = mapper.Map<UserDTO>(originalEntity);
-            mappedDto.FirstName = "UpdatedName";
-
-            using (var context = new TourStopContext(options))
-            {
-                var repository = new UserRepository(context);
-                var connector = new UserConnector(repository, mapper);
-
-                var petition = new ReadWriteBusinessPetition<UserDTO>
+                Data = new List<UserDTO>
                 {
-                    Data = new List<UserDTO>
+                    new UserDTO
                     {
-                        mappedDto
+                        Id = 1,
+                        FirstName = "FirstName",
+                        LastName = "LastName",
+                        Email = "fooUpdate1@bar.com"
                     }
-                };
+                }
+            };
 
-                Assert.Throws<AuthenticationException>(() => connector.Save(petition));
-            }
+            Assert.Throws<AuthenticationException>(() => connector.Save(petition));
         }
 
         [Fact]
@@ -216,43 +202,28 @@ namespace Business.Connectors.Tests.ConnectorsTests
         {
             var mapperConfiguration = new MapperConfiguration(x => x.AddProfile(new AutoMapperConfiguration()));
             var mapper = mapperConfiguration.CreateMapper();
-            var options = new DbContextOptionsBuilder<TourStopContext>()
-                .UseInMemoryDatabase("UpdateNoCorrespondingUser_TourStop_Db")
-                .Options;
+            var repositoryMock = new Mock<IUserRepository>();
+            var connector = new UserConnector(repositoryMock.Object, mapper);
 
-            User originalEntity;
-
-            //Add some Registries
-            using (var context = new TourStopContext(options))
+            var petition = new ReadWriteBusinessPetition<UserDTO>
             {
-                originalEntity = context.Add(new User {Email = "fooUpdateNoValidUser1@bar.com"}).Entity;
-                context.Add(new User {Email = "fooUpdateNoValidUser2@bar.com"});
-                context.Add(new User {Email = "fooUpdateNoValidUser3@bar.com"});
-                context.SaveChanges();
-            }
-
-            var mappedDto = mapper.Map<UserDTO>(originalEntity);
-            mappedDto.FirstName = "UpdatedName";
-
-            using (var context = new TourStopContext(options))
-            {
-                var repository = new UserRepository(context);
-                var connector = new UserConnector(repository, mapper);
-
-                var petition = new ReadWriteBusinessPetition<UserDTO>
+                Data = new List<UserDTO>
                 {
-                    Data = new List<UserDTO>
+                    new UserDTO
                     {
-                        mappedDto
-                    },
-                    RequestingUser = new UserDTO
-                    {
-                        Id = new Random().Next()
+                        Id = 1,
+                        FirstName = "FirstName",
+                        LastName = "LastName",
+                        Email = "fooUpdate@bar.com"
                     }
-                };
+                },
+                RequestingUser = new UserDTO
+                {
+                    Id = new Random().Next()
+                }
+            };
 
-                Assert.Throws<AuthenticationException>(() => connector.Save(petition));
-            }
+            Assert.Throws<AuthenticationException>(() => connector.Save(petition));
         }
 
         #endregion
@@ -280,7 +251,12 @@ namespace Business.Connectors.Tests.ConnectorsTests
                 }
             };
 
-            Assert.Throws<AuthenticationException>(() => connector.Delete(petition));
+            Assert.Throws<AuthenticationException>
+            (()
+                    =>
+                        connector.Delete
+                            (petition)
+            );
         }
 
         [Fact]
@@ -288,21 +264,28 @@ namespace Business.Connectors.Tests.ConnectorsTests
         {
             var mapperConfiguration = new MapperConfiguration(x => x.AddProfile(new AutoMapperConfiguration()));
             var mapper = mapperConfiguration.CreateMapper();
+
             var options = new DbContextOptionsBuilder<TourStopContext>()
-                .UseInMemoryDatabase("DeleteValidUser_TourStop_Db")
+                .UseInMemoryDatabase("User_DeleteValidUser_TourStop_Db")
                 .Options;
 
             int entityId;
 
             //Add some Registries
-            using (var context = new TourStopContext(options))
+            using
+            (var context
+                =
+                new TourStopContext(options))
             {
                 entityId = context.Add(new User {Email = "fooDelete1@bar.com"}).Entity.Id;
                 context.Add(new User {Email = "fooDelete2@bar.com"});
                 context.Add(new User {Email = "fooDelete3@bar.com"});
                 context.SaveChanges();
             }
-            using (var context = new TourStopContext(options))
+            using
+            (var context =
+                new
+                    TourStopContext(options))
             {
                 var repository = new UserRepository(context);
                 var connector = new UserConnector(repository, mapper);
@@ -323,13 +306,28 @@ namespace Business.Connectors.Tests.ConnectorsTests
                     }
                 };
 
-                connector.Delete(petition);
+                connector.Delete
+                    (petition);
             }
-
-            using (var context = new TourStopContext(options))
+            using
+            (var context =
+                new
+                    TourStopContext(options))
             {
-                Assert.Equal(2, context.Users.Count());
-                Assert.All(context.Users, x => Assert.NotEqual("fooDelete1@bar.com", x.Email));
+                Assert.Equal
+                (
+                    2,
+                    context.Users.Count
+                        ()
+                );
+                Assert.All
+                (context.Users, x
+                    =>
+                        Assert.NotEqual
+                        (
+                            "fooDelete1@bar.com",
+                            x.Email
+                        ));
             }
         }
 

@@ -3,7 +3,6 @@ using Business.Connectors.Contracts;
 using Business.Connectors.Petition;
 using Business.Handlers.Authentication.contracts;
 using Common.DTOs;
-using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Business.Handlers.Authentication
 {

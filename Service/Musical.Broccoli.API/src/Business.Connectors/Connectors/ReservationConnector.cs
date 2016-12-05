@@ -4,10 +4,6 @@ using Business.Connectors.Petition;
 using Common.DTOs;
 using DataAccessLayer.Entities;
 using DataAccessLayer.Repositories.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Business.Connectors
 {

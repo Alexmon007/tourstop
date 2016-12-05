@@ -1,11 +1,10 @@
-﻿using System.Linq;
+﻿using System.Text.RegularExpressions;
 using AutoMapper;
 using Business.Connectors.Contracts;
 using Business.Connectors.Petition;
 using Common.DTOs;
 using DataAccessLayer.Entities;
 using DataAccessLayer.Repositories.Contracts;
-using System.Text.RegularExpressions;
 
 namespace Business.Connectors
 {
