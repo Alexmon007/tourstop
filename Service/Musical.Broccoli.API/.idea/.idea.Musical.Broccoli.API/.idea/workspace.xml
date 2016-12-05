@@ -2,70 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fd10812e-26ae-4f65-b606-51d1c0407007" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../../Jsons/.user.post.NoAuthToken.json.swp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../../Jsons/user.get.invalidFilter.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../../Jsons/user.post.NoAuthToken.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../../Jsons/user.post.invalidData.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../../Jsons/user.post.loginValid.json" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../src/Musical.Broccoli.API/obj/Debug/netcoreapp1.0/.IncrementalCache" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../src/Musical.Broccoli.API/obj/Debug/netcoreapp1.0/.SDKVersion" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../src/Musical.Broccoli.API/obj/Debug/netcoreapp1.0/Musical.Broccoli.APIdotnet-compile.deps.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../src/Musical.Broccoli.API/obj/Debug/netcoreapp1.0/dotnet-compile-csc.rsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../src/Musical.Broccoli.API/obj/Debug/netcoreapp1.0/dotnet-compile.assemblyinfo.cs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../src/Musical.Broccoli.API/obj/Debug/netcoreapp1.0/dotnet-compile.rsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../test/DataAccess.Tests/obj/Debug/netcoreapp1.1/.IncrementalCache" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../test/DataAccess.Tests/obj/Debug/netcoreapp1.1/.SDKVersion" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../test/DataAccess.Tests/obj/Debug/netcoreapp1.1/dotnet-compile-csc.rsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../test/DataAccess.Tests/obj/Debug/netcoreapp1.1/dotnet-compile.assemblyinfo.cs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../test/DataAccess.Tests/obj/Debug/netcoreapp1.1/dotnet-compile.rsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../test/TourStop.API.Tests/Controllers/UserController_Tests.cs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../test/TourStop.API.Tests/Properties/AssemblyInfo.cs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../test/TourStop.API.Tests/TourStop.API.Tests.xproj" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../test/TourStop.API.Tests/TourStop.API.Tests.xproj.user" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../test/TourStop.API.Tests/obj/Debug/netcoreapp1.0/.IncrementalCache" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../test/TourStop.API.Tests/obj/Debug/netcoreapp1.0/.SDKVersion" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../test/TourStop.API.Tests/obj/Debug/netcoreapp1.0/dotnet-compile-csc.rsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../test/TourStop.API.Tests/obj/Debug/netcoreapp1.0/dotnet-compile.assemblyinfo.cs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../test/TourStop.API.Tests/obj/Debug/netcoreapp1.0/dotnet-compile.rsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../test/TourStop.API.Tests/project.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../test/TourStop.API.Tests/project.lock.json" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../.vs/Musical.Broccoli.API/v14/.suo" afterPath="$PROJECT_DIR$/../../.vs/Musical.Broccoli.API/v14/.suo" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../.vs/restore.dg" afterPath="$PROJECT_DIR$/../../.vs/restore.dg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../Musical.Broccoli.API.sln" afterPath="$PROJECT_DIR$/../../Musical.Broccoli.API.sln" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/Business.Connectors/Connectors/BaseConnector.cs" afterPath="$PROJECT_DIR$/../../src/Business.Connectors/Connectors/BaseConnector.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/Business.Connectors/Connectors/Contracts/ISessionConnector.cs" afterPath="$PROJECT_DIR$/../../src/Business.Connectors/Connectors/Contracts/ISessionConnector.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/Business.Connectors/Connectors/SessionConnector.cs" afterPath="$PROJECT_DIR$/../../src/Business.Connectors/Connectors/SessionConnector.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/Business.Connectors/Helpers/AutoMapperConfiguration.cs" afterPath="$PROJECT_DIR$/../../src/Business.Connectors/Helpers/AutoMapperConfiguration.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/Business.Handlers/Authentication/RequestAuthenticator.cs" afterPath="$PROJECT_DIR$/../../src/Business.Handlers/Authentication/RequestAuthenticator.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/Business.Handlers/Handlers/BaseRequestHandler.cs" afterPath="$PROJECT_DIR$/../../src/Business.Handlers/Handlers/BaseRequestHandler.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/Business.Handlers/Handlers/MessageRequestHandler.cs" afterPath="$PROJECT_DIR$/../../src/Business.Handlers/Handlers/MessageRequestHandler.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/Business.Handlers/Handlers/OrderRequestHandler.cs" afterPath="$PROJECT_DIR$/../../src/Business.Handlers/Handlers/OrderRequestHandler.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/Business.Handlers/Handlers/TourRequestHandler.cs" afterPath="$PROJECT_DIR$/../../src/Business.Handlers/Handlers/TourRequestHandler.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/Business.Handlers/Handlers/UserRequestHandler.cs" afterPath="$PROJECT_DIR$/../../src/Business.Handlers/Handlers/UserRequestHandler.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/Business.Handlers/Handlers/contracts/IUserRequestHandler.cs" afterPath="$PROJECT_DIR$/../../src/Business.Handlers/Handlers/contracts/IUserRequestHandler.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/Business.Handlers/Validation/Dto/TourValidator.cs" afterPath="$PROJECT_DIR$/../../src/Business.Handlers/Validation/Dto/TourValidator.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/Business.Handlers/Validation/Dto/UserValidator.cs" afterPath="$PROJECT_DIR$/../../src/Business.Handlers/Validation/Dto/UserValidator.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/Common/DTOs/SessionDTO.cs" afterPath="$PROJECT_DIR$/../../src/Common/DTOs/SessionDTO.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/Common/obj/Debug/netstandard1.6/.IncrementalCache" afterPath="$PROJECT_DIR$/../../src/Common/obj/Debug/netstandard1.6/.IncrementalCache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/DataAccessLayer/Context/TourStopContext.cs" afterPath="$PROJECT_DIR$/../../src/DataAccessLayer/Context/TourStopContext.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/DataAccessLayer/Entities/Session.cs" afterPath="$PROJECT_DIR$/../../src/DataAccessLayer/Entities/Session.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/DataAccessLayer/Repositories/BaseRepository.cs" afterPath="$PROJECT_DIR$/../../src/DataAccessLayer/Repositories/BaseRepository.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/DataAccessLayer/Repositories/Contracts/IBaseRepository.cs" afterPath="$PROJECT_DIR$/../../src/DataAccessLayer/Repositories/Contracts/IBaseRepository.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/DataAccessLayer/Repositories/Contracts/ISessionRepository.cs" afterPath="$PROJECT_DIR$/../../src/DataAccessLayer/Repositories/Contracts/ISessionRepository.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/DataAccessLayer/Repositories/SessionRepository.cs" afterPath="$PROJECT_DIR$/../../src/DataAccessLayer/Repositories/SessionRepository.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/Infrastructure/obj/Debug/netstandard1.6/.IncrementalCache" afterPath="$PROJECT_DIR$/../../src/Infrastructure/obj/Debug/netstandard1.6/.IncrementalCache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/Infrastructure/obj/Debug/netstandard1.6/.SDKVersion" afterPath="$PROJECT_DIR$/../../src/Infrastructure/obj/Debug/netstandard1.6/.SDKVersion" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/Infrastructure/obj/Debug/netstandard1.6/dotnet-compile-csc.rsp" afterPath="$PROJECT_DIR$/../../src/Infrastructure/obj/Debug/netstandard1.6/dotnet-compile-csc.rsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/Infrastructure/obj/Debug/netstandard1.6/dotnet-compile.rsp" afterPath="$PROJECT_DIR$/../../src/Infrastructure/obj/Debug/netstandard1.6/dotnet-compile.rsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/Musical.Broccoli.API/Controllers/MessageController.cs" afterPath="$PROJECT_DIR$/../../src/Musical.Broccoli.API/Controllers/MessageController.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/Musical.Broccoli.API/Controllers/OrderController.cs" afterPath="$PROJECT_DIR$/../../src/Musical.Broccoli.API/Controllers/OrderController.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/Musical.Broccoli.API/Controllers/TourController.cs" afterPath="$PROJECT_DIR$/../../src/Musical.Broccoli.API/Controllers/TourController.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/Musical.Broccoli.API/Controllers/UserController.cs" afterPath="$PROJECT_DIR$/../../src/Musical.Broccoli.API/Controllers/UserController.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/Musical.Broccoli.API/Startup.cs" afterPath="$PROJECT_DIR$/../../src/Musical.Broccoli.API/Startup.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/Musical.Broccoli.API/appsettings.json" afterPath="$PROJECT_DIR$/../../src/Musical.Broccoli.API/appsettings.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../test/Business.Handlers.Tests/BaseHandler_Tests.cs" afterPath="$PROJECT_DIR$/../../test/Business.Handlers.Tests/BaseHandler_Tests.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../test/DataAccess.Tests/BaseRepository_Tests.cs" afterPath="$PROJECT_DIR$/../../test/DataAccess.Tests/BaseRepository_Tests.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../src/DataAccessLayer/Entities/Tour.cs" afterPath="$PROJECT_DIR$/../../src/DataAccessLayer/Entities/Tour.cs" />
     </list>
     <ignored path="Musical.Broccoli.API.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -86,15 +24,30 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Tour.cs" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/../../src/DataAccessLayer/Entities/Tour.cs">
+      <file leaf-file-name="TourStopContext.cs" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../../src/DataAccessLayer/Context/TourStopContext.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="19" column="18" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
+            <state relative-caret-position="466">
+              <caret line="76" column="0" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
               <folding>
-                <marker date="1480840910099" expanded="true" signature="6:92" ph="..." />
-                <marker date="1480840910099" expanded="true" signature="128:928" ph="{...}" />
-                <marker date="1480840910099" expanded="true" signature="165:926" ph="{...}" />
+                <marker date="1480807773656" expanded="false" signature="6:68" ph="..." />
+                <marker date="1480807773656" expanded="true" signature="157:3275" ph="{...}" />
+                <marker date="1480807773656" expanded="false" signature="236:294" ph="{...}" />
+                <marker date="1480807773656" expanded="false" signature="985:1087" ph="{...}" />
+                <marker date="1480807773656" expanded="true" signature="1163:3269" ph="{...}" />
+                <marker date="1480807773656" expanded="false" signature="1186:1231" ph="AddressConfig" />
+                <marker date="1480807773656" expanded="false" signature="1245:1293" ph="CheckpointCondig" />
+                <marker date="1480807773656" expanded="false" signature="1307:1433" ph="MessageConfig" />
+                <marker date="1480807773656" expanded="false" signature="1447:1991" ph="MessageHasRecieverConfig" />
+                <marker date="1480807773656" expanded="false" signature="2005:2051" ph="MovementCondig" />
+                <marker date="1480807773656" expanded="false" signature="2065:2180" ph="OrderConfig" />
+                <marker date="1480807773656" expanded="false" signature="2194:2266" ph="PaymentInfoConfig" />
+                <marker date="1480807773656" expanded="false" signature="2280:2327" ph="PromotionConfig" />
+                <marker date="1480807773656" expanded="false" signature="2341:2385" ph="RatingConfig" />
+                <marker date="1480807773656" expanded="false" signature="2399:2448" ph="ReservationConfig" />
+                <marker date="1480807773656" expanded="true" signature="2462:2640" ph="TourConfig" />
+                <marker date="1480807773656" expanded="false" signature="2654:3121" ph="UserConfig" />
+                <marker date="1480807773656" expanded="false" signature="3135:3259" ph="SessionConfig" />
               </folding>
             </state>
           </provider>
@@ -157,16 +110,14 @@
         <option value="$PROJECT_DIR$/../../src/Business.Connectors/Connectors/SessionConnector.cs" />
         <option value="$PROJECT_DIR$/../../src/DataAccessLayer/Entities/Session.cs" />
         <option value="$PROJECT_DIR$/../../test/DataAccess.Tests/BaseRepository_Tests.cs" />
-        <option value="$PROJECT_DIR$/../../src/DataAccessLayer/Entities/Tour.cs" />
         <option value="$PROJECT_DIR$/../../src/Business.Handlers/Validation/Dto/TourValidator.cs" />
+        <option value="$PROJECT_DIR$/../../src/DataAccessLayer/Entities/Tour.cs" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1376" />
-    <option name="height" value="784" />
+    <option name="width" value="680" />
+    <option name="height" value="768" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -347,12 +298,13 @@
       <workItem from="1480754978904" duration="1177000" />
       <workItem from="1480792176796" duration="13811000" />
       <workItem from="1480827096228" duration="1011000" />
-      <workItem from="1480832078301" duration="6646000" />
+      <workItem from="1480832078301" duration="7972000" />
+      <workItem from="1480901633352" duration="10000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="110594000" />
+    <option name="totallyTimeSpent" value="111930000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -364,31 +316,31 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1376" height="784" extended-state="6" />
-    <editor active="true" />
+    <frame x="0" y="0" width="680" height="768" extended-state="1" />
+    <editor active="false" />
     <layout>
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32918397" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Errors in solution" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32780084" sideWeight="0.5029412" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32918397" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="top" auto_hide="false" internal_type="DOCKED" type="WINDOWED" visible="false" show_stripe_button="true" weight="0.32673267" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" x="688" y="30" width="664" height="730" />
-      <window_info id="UnitTesting" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.58921164" sideWeight="0.4970588" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43229166" sideWeight="0.4970588" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="NuGet" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32760364" sideWeight="0.51334953" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Change Signature" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22720589" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32918397" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Errors in solution" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2446959" sideWeight="0.4866505" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32780084" sideWeight="0.5029412" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32918397" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UnitTesting" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.58921164" sideWeight="0.4970588" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43229166" sideWeight="0.4970588" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="NuGet" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32760364" sideWeight="0.51334953" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="top" auto_hide="false" internal_type="DOCKED" type="WINDOWED" visible="false" show_stripe_button="true" weight="0.32673267" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" x="688" y="30" width="664" height="730" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
@@ -699,13 +651,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../src/DataAccessLayer/Context/TourStopContext.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="608">
-          <caret line="107" column="12" selection-start-line="107" selection-start-column="12" selection-end-line="107" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../src/Business.Handlers/Authentication/RequestAuthenticator.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="368">
@@ -738,10 +683,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="208">
           <caret line="13" column="1" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
-          <folding>
-            <marker date="1480807365338" expanded="true" signature="36:314" ph="{...}" />
-            <marker date="1480807365338" expanded="true" signature="76:312" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -749,16 +690,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="562">
           <caret line="118" column="60" selection-start-line="118" selection-start-column="60" selection-end-line="118" selection-end-column="60" />
-          <folding>
-            <marker date="1480832213758" expanded="true" signature="6:187" ph="..." />
-            <marker date="1480832213758" expanded="true" signature="215:4263" ph="{...}" />
-            <marker date="1480832213758" expanded="true" signature="255:4261" ph="{...}" />
-            <marker date="1480832213758" expanded="true" signature="328:1384" ph="{...}" />
-            <marker date="1480832213758" expanded="true" signature="674:1045" ph="{...}" />
-            <marker date="1480832213758" expanded="true" signature="1451:2423" ph="{...}" />
-            <marker date="1480832213758" expanded="true" signature="2485:3537" ph="{...}" />
-            <marker date="1480832213758" expanded="true" signature="3601:4255" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -766,16 +697,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="336">
           <caret line="21" column="14" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
-          <folding>
-            <marker date="1480570605427" expanded="true" signature="0:783" ph="{...}" />
-            <marker date="1480570605427" expanded="true" signature="48:87" ph="{...}" />
-            <marker date="1480570605427" expanded="true" signature="109:398" ph="{...}" />
-            <marker date="1480570605427" expanded="true" signature="445:781" ph="{...}" />
-            <marker date="1480570605427" expanded="true" signature="472:775" ph="{...}" />
-            <marker date="1480570605427" expanded="true" signature="502:657" ph="{...}" />
-            <marker date="1480570605427" expanded="true" signature="545:643" ph="{...}" />
-            <marker date="1480570605427" expanded="true" signature="682:765" ph="[...]" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -783,33 +704,39 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="351">
           <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-          <folding>
-            <marker date="1480841615797" expanded="true" signature="6:104" ph="..." />
-            <marker date="1480841615797" expanded="true" signature="148:1844" ph="{...}" />
-            <marker date="1480841615797" expanded="true" signature="213:1842" ph="{...}" />
-            <marker date="1480841615797" expanded="true" signature="362:512" ph="{...}" />
-            <marker date="1480841615797" expanded="true" signature="422:501" ph="{...}" />
-            <marker date="1480841615797" expanded="true" signature="601:808" ph="{...}" />
-            <marker date="1480841615797" expanded="true" signature="661:797" ph="{...}" />
-            <marker date="1480841615797" expanded="true" signature="818:1510" ph="Validators" />
-            <marker date="1480841615797" expanded="true" signature="881:956" ph="{...}" />
-            <marker date="1480841615797" expanded="true" signature="1008:1123" ph="{...}" />
-            <marker date="1480841615797" expanded="true" signature="1192:1306" ph="{...}" />
-            <marker date="1480841615797" expanded="true" signature="1375:1490" ph="{...}" />
-            <marker date="1480841615797" expanded="true" signature="1586:1667" ph="{...}" />
-            <marker date="1480841615797" expanded="true" signature="1710:1836" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../../src/DataAccessLayer/Entities/Tour.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="19" column="18" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
+        <state relative-caret-position="272">
+          <caret line="17" column="8" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../src/DataAccessLayer/Context/TourStopContext.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="466">
+          <caret line="76" column="0" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
           <folding>
-            <marker date="1480840910099" expanded="true" signature="6:92" ph="..." />
-            <marker date="1480840910099" expanded="true" signature="128:928" ph="{...}" />
-            <marker date="1480840910099" expanded="true" signature="165:926" ph="{...}" />
+            <marker date="1480807773656" expanded="false" signature="6:68" ph="..." />
+            <marker date="1480807773656" expanded="true" signature="157:3275" ph="{...}" />
+            <marker date="1480807773656" expanded="false" signature="236:294" ph="{...}" />
+            <marker date="1480807773656" expanded="false" signature="985:1087" ph="{...}" />
+            <marker date="1480807773656" expanded="true" signature="1163:3269" ph="{...}" />
+            <marker date="1480807773656" expanded="false" signature="1186:1231" ph="AddressConfig" />
+            <marker date="1480807773656" expanded="false" signature="1245:1293" ph="CheckpointCondig" />
+            <marker date="1480807773656" expanded="false" signature="1307:1433" ph="MessageConfig" />
+            <marker date="1480807773656" expanded="false" signature="1447:1991" ph="MessageHasRecieverConfig" />
+            <marker date="1480807773656" expanded="false" signature="2005:2051" ph="MovementCondig" />
+            <marker date="1480807773656" expanded="false" signature="2065:2180" ph="OrderConfig" />
+            <marker date="1480807773656" expanded="false" signature="2194:2266" ph="PaymentInfoConfig" />
+            <marker date="1480807773656" expanded="false" signature="2280:2327" ph="PromotionConfig" />
+            <marker date="1480807773656" expanded="false" signature="2341:2385" ph="RatingConfig" />
+            <marker date="1480807773656" expanded="false" signature="2399:2448" ph="ReservationConfig" />
+            <marker date="1480807773656" expanded="true" signature="2462:2640" ph="TourConfig" />
+            <marker date="1480807773656" expanded="false" signature="2654:3121" ph="UserConfig" />
+            <marker date="1480807773656" expanded="false" signature="3135:3259" ph="SessionConfig" />
           </folding>
         </state>
       </provider>
