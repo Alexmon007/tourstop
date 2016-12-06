@@ -22,7 +22,7 @@ namespace Business.Connectors
 
         protected override bool ValidateSave(ReadWriteBusinessPetition<MessageDTO> petition)
         {
-            return petition.RequestingUser != null;
+            return petition.RequestingUser != null && petition.Data.TrueForAll(x=>x.Id==0);
         }
 
         protected override bool ValidateDelete(ReadWriteBusinessPetition<MessageDTO> petition)

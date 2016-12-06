@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Linq;
 using AutoMapper;
 using Common.DTOs;
 using DataAccessLayer.Entities;
+using System.Collections.Generic;
 
 namespace Business.Connectors.Helpers
 {
@@ -25,8 +27,10 @@ namespace Business.Connectors.Helpers
 
             #region Message
 
-            CreateMap<Message, TourDTO>().MaxDepth(3);
-            CreateMap<TourDTO, Message>().MaxDepth(3);
+            CreateMap<Message, MessageDTO>().ForMember(dest => dest.Receivers,
+               opts => opts.MapFrom(src => src.MessageHasRecievers.Select(x=>x.Reciever).ToList())).MaxDepth(3);
+            CreateMap<MessageDTO, Message>().ForMember(dest => dest.MessageHasRecievers,
+               opts => opts.MapFrom(src =>src.Receivers.Select(x=> new MessageHasReciever { MessageId= src.Id,RecieverId=x.Id}).ToList())).MaxDepth(3);
 
             #endregion
 
