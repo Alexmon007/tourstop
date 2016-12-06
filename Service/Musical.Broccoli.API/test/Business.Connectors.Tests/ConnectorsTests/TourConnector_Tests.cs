@@ -197,13 +197,14 @@ namespace Business.Connectors.Tests.ConnectorsTests
             //Add some Registries
             using (var context = new TourStopContext(options))
             {
+                var user = new User { Email = "foo@bar.com", UserType = UserType.Promoter };
                 originalEntity = context.Add(new Tour
                 {
                     Title = "Tour1",
                     MaxReservation = 10,
                     Status = true,
                     DateCreated = DateTime.Now,
-                    User = new User {Email = "foo1@bar.com"}
+                    User = user
                 }).Entity;
                 context.Add(new Tour
                 {
@@ -211,7 +212,7 @@ namespace Business.Connectors.Tests.ConnectorsTests
                     MaxReservation = 10,
                     Status = true,
                     DateCreated = DateTime.Now,
-                    User = new User {Email = "foo2@bar.com"}
+                    User = user
                 });
                 context.Add(new Tour
                 {
@@ -219,7 +220,7 @@ namespace Business.Connectors.Tests.ConnectorsTests
                     MaxReservation = 10,
                     Status = true,
                     DateCreated = DateTime.Now,
-                    User = new User {Email = "foo3@bar.com"}
+                    User = user
                 });
                 context.SaveChanges();
             }
@@ -239,7 +240,7 @@ namespace Business.Connectors.Tests.ConnectorsTests
                     {
                         mappedDto
                     },
-                    RequestingUser = new UserDTO {Id = 1, UserType = UserType.Promoter}
+                    RequestingUser = mappedDto.User
                 };
 
                 connector.Save(petition);
