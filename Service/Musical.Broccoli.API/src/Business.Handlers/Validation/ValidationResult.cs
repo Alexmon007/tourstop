@@ -1,5 +1,8 @@
 ﻿namespace Business.Handlers.Validation
 {
+    /// <summary>
+    /// Result from validations
+    /// </summary>
     public class ValidationResult
     {
         public string Reason { get; set; }

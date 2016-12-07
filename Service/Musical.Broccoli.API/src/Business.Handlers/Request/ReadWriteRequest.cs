@@ -4,6 +4,11 @@ using Common.DTOs;
 
 namespace Business.Handlers.Request
 {
+    /// <summary>
+    /// Request from Controller
+    /// Data added for Write requests
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class ReadWriteRequest<T> : Request where T : BaseDTO
     {
         public List<T> Data { get; set; }

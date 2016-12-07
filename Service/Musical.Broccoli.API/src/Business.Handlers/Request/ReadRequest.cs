@@ -4,6 +4,9 @@ using Business.Connectors.Petition;
 
 namespace Business.Handlers.Request
 {
+    /// <summary>
+    /// Request from Controller
+    /// </summary>
     public class ReadRequest : Request
     {
         public List<Filter> Filters { get; set; }

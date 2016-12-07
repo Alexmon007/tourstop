@@ -7,6 +7,9 @@ using System.Collections.Generic;
 
 namespace Business.Connectors.Helpers
 {
+    /// <summary>
+    /// Sets the different mappings that are used througout Automapper
+    /// </summary>
     public class AutoMapperConfiguration : Profile
     {
         protected override void Configure()

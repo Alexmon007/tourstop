@@ -4,6 +4,10 @@ using Common.DTOs;
 
 namespace Business.Handlers.Response
 {
+    /// <summary>
+    /// Response from Business
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class Response<T> where T : BaseDTO
     {
         public ICollection<T> Data { get; set; }

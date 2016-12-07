@@ -6,16 +6,27 @@ using Common.DTOs;
 
 namespace Business.Handlers.Authentication
 {
+    /// <summary>
+    /// Where the Authorization Token is turn into user
+    /// </summary>
     public class RequestAuthenticator : IRequestAuthenticator
     {
         private readonly ISessionConnector _connector;
 
+        /// <summary>
+        /// Contructor
+        /// </summary>
+        /// <param name="connector">UserConnector</param>
         public RequestAuthenticator(ISessionConnector connector)
         {
             _connector = connector;
         }
 
-
+        /// <summary>
+        /// Turns Authorization Token to user if is valid.
+        /// </summary>
+        /// <param name="authToken">Authorization Token</param>
+        /// <returns>Requested User</returns>
         public UserDTO Authenticate(string authToken)
         {
             if (string.IsNullOrEmpty(authToken)) return null;

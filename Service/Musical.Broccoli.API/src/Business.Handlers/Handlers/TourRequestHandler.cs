@@ -7,6 +7,10 @@ using Common.DTOs;
 
 namespace Business.Handlers.Handlers
 {
+    /// <summary>
+    /// Where OrderController Requests turns into BusinessPetitions
+    /// Logic in BaseRequestHandler
+    /// </summary>
     public class TourRequestHandler : BaseRequestHandler<TourDTO>, ITourRequestHandler
     {
         public TourRequestHandler(ITourConnector connector, IRequestAuthenticator authenticator)

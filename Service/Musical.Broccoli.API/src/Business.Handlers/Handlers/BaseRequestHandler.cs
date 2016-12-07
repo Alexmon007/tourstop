@@ -11,6 +11,9 @@ using Common.Exceptions;
 
 namespace Business.Handlers.Handlers
 {
+    /// <summary>
+    /// Where Controller Request turns into BusinessPetition
+    /// </summary>
     public abstract class BaseRequestHandler<T> : IBaseRequestHandler<T> where T : BaseDTO
     {
         #region Instance Properties
@@ -27,6 +30,11 @@ namespace Business.Handlers.Handlers
 
         #endregion
 
+        /// <summary>
+        /// Contructor
+        /// </summary>
+        /// <param name="connector">Generic Connector</param>
+        /// <param name="authenticator">Aunthenticator</param>
         protected BaseRequestHandler(IBaseConnector<T> connector,
             IRequestAuthenticator authenticator)
         {
@@ -36,6 +44,11 @@ namespace Business.Handlers.Handlers
 
         #region Handle Methods
 
+        /// <summary>
+        ///  Read Request into Response
+        /// </summary>
+        /// <param name="request">Service Request</param>
+        /// <returns>Business Response</returns>
         public Response<T> HandleReadRequest(ReadRequest request)
         {
             ValidateRequest(request, ReadRequestValidator.GetValidator());
@@ -48,6 +61,11 @@ namespace Business.Handlers.Handlers
             return response;
         }
 
+        /// <summary>
+        ///  Read/Write Request into Response
+        /// </summary>
+        /// <param name="request">Service Request</param>
+        /// <returns>Business Response</returns>
         public Response<T> HandleReadWriteRequest(ReadWriteRequest<T> request)
         {
             ValidateRequest(request, ReadWriteRequestValidator<T>.Build(FullValidator));
@@ -59,6 +77,11 @@ namespace Business.Handlers.Handlers
             return response;
         }
 
+        /// <summary>
+        ///  Delete Request into Response
+        /// </summary>
+        /// <param name="request">Service Request</param>
+        /// <returns>Business Response</returns>
         public Response<T> HandleDeleteRequest(ReadWriteRequest<T> request)
         {
             ValidateRequest(request, ReadWriteRequestValidator<T>.Build(DeleteValidator));
@@ -72,11 +95,21 @@ namespace Business.Handlers.Handlers
 
         #endregion
 
+        /// <summary>
+        ///  Validate Request befor Response
+        /// </summary>
+        /// <param name="request">Service Request</param>
+        /// <returns>nothing or Exception</returns>
         protected static void ValidateRequest<TRequest>(TRequest request, BaseValidator<TRequest> validator)
         {
             if (!validator.Validate(request).IsValid) throw new InvalidRequestException();
         }
 
+        /// <summary>
+        /// Turns Request into Petition
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns>Business petition</returns>
         protected ReadWriteBusinessPetition<T> ParseReadWriteRequest(ReadWriteRequest<T> request)
         {
             var petition = (ReadWriteBusinessPetition<T>) request;

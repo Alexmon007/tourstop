@@ -5,11 +5,18 @@ namespace DataAccessLayer.Context
 {
     public sealed class TourStopContext : DbContext
     {
+        /// <summary>
+        /// This creates the connection between the models and the Database, if the Database does not exists, it creates a new one.
+        /// </summary>
+        /// <param name="options">Databse options</param>
         public TourStopContext(DbContextOptions options) : base(options)
         {
             Database.EnsureCreated();
         }
 
+        /// <summary>
+        /// Database tables
+        /// </summary>
         public DbSet<Address> Addresses { get; set; }
         public DbSet<CheckPoint> CheckPoints { get; set; }
         public DbSet<Message> Messages { get; set; }
@@ -23,14 +30,23 @@ namespace DataAccessLayer.Context
         public DbSet<User> Users { get; set; }
         public DbSet<Session> Sessions { get; set; }
 
+        /// <summary>
+        /// Only update if there is any changes to the Db records.
+        /// </summary>
+        /// <returns></returns>
         public override int SaveChanges()
-        {
+        {            
             ChangeTracker.DetectChanges();
             return base.SaveChanges();
         }
 
+        /// <summary>
+        /// Describe the table's relations and special attributes while creating the database.
+        /// </summary>
+        /// <param name="modelBuilder"></param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
+        {    
+
             #region AddressConfig
 
             #endregion

@@ -2,6 +2,9 @@
 
 namespace Business.Connectors.Helpers
 {
+    /// <summary>
+    /// Creates instances of Automapper
+    /// </summary>
     public static class AutoMapperFactory
     {
         private static IMapper _mapper;

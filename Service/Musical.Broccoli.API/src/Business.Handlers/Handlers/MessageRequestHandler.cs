@@ -7,6 +7,10 @@ using Common.DTOs;
 
 namespace Business.Handlers.Handlers
 {
+    /// <summary>
+    /// Where MessageController Requests turns into BusinessPetitions
+    /// Logic in BaseRequestHandler
+    /// </summary>
     public class MessageRequestHandler : BaseRequestHandler<MessageDTO>, IMessageRequestHandler
     {
         public MessageRequestHandler(IMessageConnector connector, IRequestAuthenticator authenticator)

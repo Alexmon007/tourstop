@@ -6,6 +6,10 @@ namespace DataAccessLayer.Factories
 {
     public static class TourStopContextFactory
     {
+        /// <summary>
+        /// Creates an instance of Context with specific options
+        /// </summary>
+        /// <returns></returns>
         public static TourStopContext Create()
         {
             var optionsBuilder = new DbContextOptionsBuilder<TourStopContext>();

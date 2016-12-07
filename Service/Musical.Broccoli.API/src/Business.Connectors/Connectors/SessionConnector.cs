@@ -15,11 +15,22 @@ using AuthenticationException = System.Security.Authentication.AuthenticationExc
 
 namespace Business.Connectors
 {
+    /// <summary>
+    /// Connector for Message Entity
+    /// Business Logic at BaseConnector
+    /// </summary>
     public class SessionConnector : BaseConnector<SessionDTO, Session>, ISessionConnector
     {
         protected new ISessionRepository Repository => (ISessionRepository) base.Repository;
         private readonly IUserRepository _userRepository;
 
+        /// <summary>
+        /// Constructor
+        /// UserRepostory is also added
+        /// </summary>
+        /// <param name="repository">Database Repository</param>
+        /// <param name="userRepository">User Repistory</param>
+        /// <param name="mapper">Configuration Mapper</param>
         public SessionConnector(ISessionRepository repository, IMapper mapper, IUserRepository userRepository)
             : base(repository, mapper)
         {
@@ -28,6 +39,9 @@ namespace Business.Connectors
 
         #region Processing Functions
 
+        /// <summary>
+        /// Select the process through out the pettion type
+        /// </summary>
         public new Func<ReadBusinessPetition, BusinessResponse<SessionDTO>> Get => ProcessGet;
         public new Func<ReadWriteBusinessPetition<UserDTO>, BusinessResponse<SessionDTO>> Save => ProcessSave;
         public new Func<ReadWriteBusinessPetition<SessionDTO>, BusinessResponse<SessionDTO>> Delete => ProcessDelete;
@@ -35,7 +49,11 @@ namespace Business.Connectors
         #endregion
 
         #region Petition Processing
-
+        /// <summary>
+        /// Procces GET Petitions
+        /// </summary>
+        /// <param name="petition">Requested information</param>
+        /// <returns>Response with infomation</returns>
         private new BusinessResponse<SessionDTO> ProcessGet(ReadBusinessPetition petition)
         {
             if (!Validate(petition, ValidateGet)) throw new AuthenticationException();
@@ -60,6 +78,11 @@ namespace Business.Connectors
             return businessResponse;
         }
 
+        /// <summary>
+        /// Procces SAVE Petitions
+        /// </summary>
+        /// <param name="petition">Requested information</param>
+        /// <returns>Response</returns>
         private BusinessResponse<SessionDTO> ProcessSave(ReadWriteBusinessPetition<UserDTO> petition)
         {
             if (!Validate(petition, ValidateSave)) throw new AuthenticationException();
@@ -96,6 +119,11 @@ namespace Business.Connectors
             return businessResponse;
         }
 
+        /// <summary>
+        /// Procces DELETE Petitions
+        /// </summary>
+        /// <param name="petition">Requested information</param>
+        /// <returns>Response</returns>
         private new BusinessResponse<SessionDTO> ProcessDelete(ReadWriteBusinessPetition<SessionDTO> petition)
         {
             if (!Validate(petition, ValidateDelete)) throw new AuthenticationException();
@@ -107,6 +135,11 @@ namespace Business.Connectors
 
         #region Validate Methods
 
+        /// <summary>
+        /// Implemented Business Rules for GET pettions
+        /// </summary>
+        /// <param name="petition">Requested information</param>
+        /// <returns>Evaluation</returns>
         protected override bool ValidateGet(ReadBusinessPetition petition)
         {
             const string pattern = @"(?:authtoken=\S*.)";
@@ -116,16 +149,32 @@ namespace Business.Connectors
             return matches.Count == 1;
         }
 
+
+        /// <summary>
+        /// Implemented Business Rules for SAVE pettions
+        /// </summary>
+        /// <param name="petition">Requested information</param>
+        /// <returns>Evaluation</returns>
         protected override bool ValidateSave(ReadWriteBusinessPetition<SessionDTO> petition)
         {
             return false;
         }
 
+        /// <summary>
+        /// Implemented Business Rules for SAVE pettions
+        /// </summary>
+        /// <param name="petition">Requested information</param>
+        /// <returns>Evaluation</returns>
         protected bool ValidateSave(ReadWriteBusinessPetition<UserDTO> petition)
         {
             return true;
         }
 
+        /// <summary>
+        /// Implemented Business Rules for DELETE pettions
+        /// </summary>
+        /// <param name="petition">Requested information</param>
+        /// <returns>Evaluation</returns>
         protected override bool ValidateDelete(ReadWriteBusinessPetition<SessionDTO> petition)
         {
             return false;

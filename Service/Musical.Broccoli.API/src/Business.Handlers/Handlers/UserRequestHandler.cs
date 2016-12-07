@@ -11,6 +11,11 @@ using Common.DTOs;
 
 namespace Business.Handlers.Handlers
 {
+    /// <summary>
+    /// Where MessageController Requests turns into BusinessPetitions
+    /// Logic in BaseRequestHandler
+    /// Login Added
+    /// </summary>
     public class UserRequestHandler : BaseRequestHandler<UserDTO>, IUserRequestHandler
     {
         private readonly ISessionConnector _sessionConnector;
@@ -25,6 +30,11 @@ namespace Business.Handlers.Handlers
         protected override BaseValidator<UserDTO> FullValidator => UserValidator.All();
         protected override BaseValidator<UserDTO> DeleteValidator => UserValidator.HasId();
 
+        /// <summary>
+        /// Login Request
+        /// </summary>
+        /// <param name="request">ReadWriteRequest from Controller</param>
+        /// <returns>Session for a User</returns>
         public Response<SessionDTO> HandleLoginRequest(ReadWriteRequest<UserDTO> request)
         {
             ValidateRequest(request, ReadWriteRequestValidator<UserDTO>.Build(

@@ -135,7 +135,7 @@ namespace Business.Connectors.Tests.ConnectorsTests
                 }
             };
 
-            Assert.Throws<InvalidRequestException>(() => connector.Get(petition));
+            Assert.Throws<AuthenticationException>(() => connector.Get(petition));
         }
 
         #endregion
@@ -400,6 +400,7 @@ namespace Business.Connectors.Tests.ConnectorsTests
                 {
                     new OrderDTO
                     {
+                        Id=1,
                         DateCreated = DateTime.Now,
                         TotalAmount = 25,
                         PaymentType = PaymentType.Cash,
@@ -421,7 +422,7 @@ namespace Business.Connectors.Tests.ConnectorsTests
                 },
                 RequestingUser = new UserDTO
                 {
-                    Id = new Random().Next()
+                    Id =2
                 }
             };
 

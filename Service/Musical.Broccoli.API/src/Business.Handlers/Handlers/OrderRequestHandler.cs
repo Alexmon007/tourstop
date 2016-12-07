@@ -7,6 +7,10 @@ using Common.DTOs;
 
 namespace Business.Handlers.Handlers
 {
+    /// <summary>
+    /// Where OrderController Requests turns into BusinessPetitions
+    /// Logic in BaseRequestHandler
+    /// </summary>
     public class OrderRequestHandler : BaseRequestHandler<OrderDTO>, IOrderRequestHandler
     {
         public OrderRequestHandler(IOrderConnector connector, IRequestAuthenticator authenticator)

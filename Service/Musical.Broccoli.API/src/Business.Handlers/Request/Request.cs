@@ -2,6 +2,9 @@
 
 namespace Business.Handlers.Request
 {
+    /// <summary>
+    /// Resquest from service
+    /// </summary>
     public abstract class Request
     {
         public string AuthToken { get; set; }

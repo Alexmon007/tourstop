@@ -1,5 +1,8 @@
 ﻿namespace Business.Handlers.Request
 {
+    /// <summary>
+    /// To create queries to find entities in the database.
+    /// </summary>
     public class Filter
     {
         private string _expressionString;
