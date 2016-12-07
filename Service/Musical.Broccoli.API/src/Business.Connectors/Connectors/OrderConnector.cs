@@ -33,11 +33,11 @@ namespace Business.Connectors
         /// <returns>Evaluation</returns>
         protected override bool ValidateGet(ReadBusinessPetition petition)
         {
-            if (string.IsNullOrEmpty(petition.FilterString)) { return false; }
-            var matches = Regex.Matches(petition.FilterString, @"[UserId=](\d*.)", RegexOptions.ExplicitCapture);
-            return petition.RequestingUser != null &&
-                matches.Count == 4 &&
-                petition.FilterString.Contains(string.Format("UserId = {0}", petition.RequestingUser.Id)); //TODO: Really only the owner user can see the Order THINK MY FRIEND
+            if (string.IsNullOrEmpty( petition.FilterString )) { return false; }
+            var matches = Regex.Matches( petition.FilterString, @"[UserId=](\d)", RegexOptions.IgnoreCase );
+            return petition.RequestingUser != null
+                && matches.Count == 1
+                && int.Parse( matches[0].Groups[1].Value ) == petition.RequestingUser.Id;
         }
         /// <summary>
         /// Implemented Business Rules for SAVE pettions
@@ -46,8 +46,7 @@ namespace Business.Connectors
         /// <returns>Evaluation</returns>
         protected override bool ValidateSave(ReadWriteBusinessPetition<OrderDTO> petition)
         {
-            return petition.RequestingUser != null && petition.Data != null &&
-                (petition.Data.All(x => x.Id == 0) || petition.Data.All(x => x.UserId == petition.RequestingUser.Id));
+            return petition.RequestingUser != null && petition.Data.TrueForAll( x => x.UserId == petition.RequestingUser.Id );
         }
 
         /// <summary>
