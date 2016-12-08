@@ -18,5 +18,10 @@ namespace DataAccessLayer.Entities
 
         [Required]
         public string PromoCode { get; set; }
+
+        [Required]
+        public int TourId { get; set; }
+
+        public Tour Tour { get; set; }
     }
 }

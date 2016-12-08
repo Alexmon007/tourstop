@@ -12,10 +12,12 @@ namespace DataAccessLayer.Entities
         public bool Status { get; set; }
         public DateTime DateModified { get; set; }
         public DateTime DateCreated { get; set; }
+        
 
         public int UserId { get; set; }
 
         public User User { get; set; }
+        public ICollection<CheckPoint> CheckPoints { get; set; }
         public ICollection<Reservation> Reservations { get; set; }
         public ICollection<Rating> Ratings { get; set; }
     }
